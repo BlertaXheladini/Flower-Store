@@ -1,0 +1,141 @@
+:root {
+    --green: #223222;
+    --brown: #987d67;
+    --beige: #cdbcac;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-color: var(--beige);
+    scroll-behavior: smooth;
+}
+
+main{
+
+    display: flex;
+    flex-wrap: nowrap; 
+}
+
+h2{
+    size: 500%; 
+    margin: 30px;
+    display: flex;
+    justify-content: center;
+    text-transform: uppercase;
+color: var(--brown);
+}
+
+
+
+.bestseller p{
+margin: 10px;
+color: var(--brown);
+cursor: pointer;
+}
+
+
+.bestseller p:hover{
+ color: var(--green);
+
+}
+
+
+
+.box{
+
+    display: flex;
+    flex-wrap: wrap;
+  gap:1.5rem;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+    color: var(--brown);
+    cursor: pointer;
+}
+
+
+.box:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+
+.box img{
+    height: 180px;
+    width: 150px;
+    padding: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+
+
+
+.price {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: italic;
+}
+
+
+
+
+
+
+
+
+
+.gifts p{
+    margin: 10px;
+    color: var(--brown);
+    cursor: pointer;
+    }
+    
+    
+    .gifts p:hover{
+     color: var(--green);
+    
+    }
+    
+
+
+
+
+
+
+
+.box1{
+
+    display: flex;
+    flex-wrap: wrap;
+  gap:1.5rem;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+    color: var(--brown);
+    cursor: pointer;
+}
+
+
+
+
+.box1:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+
+
+.box1 img{
+    height: 180px;
+    width: auto;
+    padding: 10px;
+}
