@@ -15,26 +15,26 @@ body {
     background-color: var(--beige);
 }
 
- .c1{
+.c1 {
     background-color: var(--green);
     color: var(--brown);
-   
+
 }
 
 h3 {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 30px ;
-    padding-top:20px ;
+    margin-top: 30px;
+    padding-top: 20px;
     color: var(--brown);
     font-size: 280%;
-    
+
 }
- 
-.container{
+
+.container {
     padding: 20px;
-    
+
 }
 
 
@@ -42,29 +42,29 @@ h3 {
 .top-about {
     display: flex;
     flex-direction: row;
-    
+
 
 }
 
-.top-about img{
+.top-about img {
     height: 400px;
     width: 700px;
 }
 
 
-.top-text{
+.top-text {
     margin-left: 150px;
     width: 40%;
-      
-  }
+
+}
 
 
-  .top-text h2{
+.top-text h2 {
     margin-bottom: 30px;
     margin-top: 30px;
     display: flex;
     justify-content: center;
-  }
+}
 
 .bottom-about {
     display: flex;
@@ -72,19 +72,19 @@ h3 {
 
 }
 
-.bottom-about img{
+.bottom-about img {
     height: 400px;
     width: 600px;
     margin-left: 150px;
-    
+
 }
 
 
-.bottom-text{
+.bottom-text {
     margin-top: 100px;
     margin-left: 30px;
-    
-  }
+
+}
 
 #flower-shop-1 {
     width: 100%;
@@ -109,12 +109,12 @@ footer a {
 }
 
 
-a{
+a {
     text-decoration: none;
     cursor: pointer;
 }
 
-a:hover{
+a:hover {
     color: var(--green);
 }
 
@@ -138,7 +138,7 @@ a:hover{
     justify-content: flex-end;
     align-items: center;
     flex-direction: column;
-    
+
 
 }
 
@@ -155,7 +155,12 @@ a:hover{
     justify-content: space-between;
     margin-top: 2px;
     cursor: pointer;
+    transition: all .50s ease;
 
 }
 
 
+
+.faicons i:hover {
+    transform: translateY(-4px);
+}
