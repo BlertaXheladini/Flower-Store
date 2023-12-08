@@ -8,134 +8,153 @@
     padding: 0;
     margin: 0;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    background-color: var(--beige);
     scroll-behavior: smooth;
 }
 
-main{
-
-    display: flex;
-    flex-wrap: nowrap; 
+body {
+    background-color: var(--green);
 }
 
-h2{
-    size: 500%; 
-    margin: 30px;
-    display: flex;
-    justify-content: center;
-    text-transform: uppercase;
-color: var(--brown);
-}
-
-
-
-.bestseller p{
-margin: 10px;
-color: var(--brown);
-cursor: pointer;
-}
-
-
-.bestseller p:hover{
- color: var(--green);
+main {
+    background-color: var(--beige);
+    margin: 50px;
 
 }
 
+img {
+
+    height: 200px;
+    width: auto;
+    margin-bottom: 15px;
+}
+
+.bestseller {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, auto));
+    align-items: center;
+    gap: 1px;
+    margin-top: 20px;
+    text-align: center;
+    padding: 20px;
+}
 
 
-.box{
 
-    display: flex;
-    flex-wrap: wrap;
-  gap:1.5rem;
-    border: 1px solid #ddd;
+.gifts {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, auto));
+    align-items: center;
+    gap: 25px;
+    margin-top: 20px;
+    text-align: center;
+    padding: 40px;
+}
+
+.box {
+    width: 200px;
+    height: 280px;
+    border: 1px solid, ;
     border-radius: 10px;
-    margin: 10px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s ease;
-    color: var(--brown);
+    margin: 10px;
     cursor: pointer;
 }
-
 
 .box:hover {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-
-.box img{
-    height: 180px;
-    width: 150px;
-    padding: 10px;
-    overflow: hidden;
-    position: relative;
-}
-
-
-
-
-.price {
+h1{
     display: flex;
     justify-content: center;
-    margin-top: 10px;
-    font-size: 18px;
-    font-weight: italic;
+    font-size:50px ;
+    line-height:60px ;
+    margin-top:30px ;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--green);
+    background: url(pictures/back.png);
+    -webkit-background-clip:text;
+    background-position: 0 0;
+    animation: back 20s linear infinite;
+}
+
+@keyframes back{
+    100%{
+        background-position: 2000px 0;
+    }
+}
+
+
+h2 {
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+    font-size: 35px;
+    color: var(--brown);
+    padding-top: 35px;
+}
+
+
+h4 {
+    font-size: 14px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    font-weight: 400;
+    color: var(--brown);
+    transition: all .50s ease;
+}
+
+h4:hover {
+    color: var(--green);
+    cursor: pointer;
+}
+
+
+h5 {
+    color: var(--green);
+    font-size: 12px;
+    font-weight: 600;
 }
 
 
 
-
-
-
-
-
-
-.gifts p{
-    margin: 10px;
+.top {
+    position: absolute;
+    top: 30px;
+    height: 20px;
+    width: 65px;
+    border-radius: 3px;
     color: var(--brown);
-    cursor: pointer;
-    }
-    
-    
-    .gifts p:hover{
-     color: var(--green);
-    
-    }
-    
-
-
-
-
-
-
-
-.box1{
-
+    background-color: var(--green);
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
     display: flex;
-    flex-wrap: wrap;
-  gap:1.5rem;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    margin: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s ease;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.box .bbtn a {
+    position: relative;
+    bottom: 65px;
+    left: 0;
+    right: 0;
+    padding: 13px;
+    background-color: rgb(0, 0, 0, 0.8);
     color: var(--brown);
-    cursor: pointer;
+    transition: opacity 0.5s;
+    opacity: 0;
+    text-decoration: none;
+
+
 }
 
-
-
-
-.box1:hover {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-
-
-.box1 img{
-    height: 180px;
-    width: auto;
-    padding: 10px;
+.box:hover .bbtn a {
+    opacity: 1;
 }
