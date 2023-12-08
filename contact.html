@@ -2,10 +2,8 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="contact.css" type="text/css">
-    <script src="flower.js"></script>
+    <script defer src="./contact.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <title>Contact Us</title>
 </head>
@@ -45,20 +43,24 @@
                 </div>
 
                 <div class="contactForm">
-                    <form>
+                    <form id="form" action="">
                         <h2>LEAVE A MESSAGE</h2>
                         <div class="input">
-                            <input type="text" name="Name" placeholder="Name">
+                            <input type="text" id="name" placeholder="Name">
+                            <div class="error"></div>
                         </div>
                         <div class="input">
-                            <input type="number" name="number" placeholder="Phone Number">
+                            <input type="text" id="number" placeholder="Phone Number">
+                            <div class="error"></div>
                         </div>
                         <div class="input">
-                            <input type="email" name="email" placeholder="E-mail">
-                        <div class="input">
-                            <textarea name="Message" placeholder="Message"></textarea>
+                            <input type="text" id="email" placeholder="E-mail">
+                            <div class="error"></div>
+                        <div class="inputi">
+                            <textarea name="Message" id="message" placeholder="Message"></textarea>
+                            <div class="error"></div>
                         </div> 
-                        <button type="submit">SEND MESSAGE</button>
+                        <button type="submit" class="btn">SEND MESSAGE</button>
                     </div>
                     </form>
                 </div>
@@ -66,28 +68,6 @@
 
         </div>
     </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-
 
 
 </body>
