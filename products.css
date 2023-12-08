@@ -21,7 +21,7 @@ main {
 
 }
 
-img {
+ main img {
 
     height: 200px;
     width: auto;
@@ -68,28 +68,28 @@ img {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-h1{
+h1 {
     display: flex;
     justify-content: center;
-    font-size:50px ;
-    line-height:60px ;
-    margin-top:30px ;
+    font-size: 50px;
+    line-height: 60px;
+    margin-top: 30px;
     color: transparent;
     -webkit-text-stroke: 1px var(--green);
     background: url(pictures/back.png);
-    -webkit-background-clip:text;
+    -webkit-background-clip: text;
     background-position: 0 0;
     animation: back 20s linear infinite;
 }
 
-@keyframes back{
-    100%{
+@keyframes back {
+    100% {
         background-position: 2000px 0;
     }
 }
 
 
-h2 {
+ main h2 {
     text-transform: uppercase;
     text-align: center;
     text-decoration: none;
@@ -157,4 +157,89 @@ h5 {
 
 .box:hover .bbtn a {
     opacity: 1;
+}
+
+
+
+
+footer {
+    background-color: var(--beige);
+    margin: 50px;
+    padding: 3% 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    font-size: 100%;
+    color: var(--brown);
+}
+
+footer a {
+    color: var(--brown);
+    text-transform: uppercase;
+}
+
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a:hover {
+    color: var(--green);
+}
+
+
+
+.leftfooter {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
+
+}
+
+.mainfooter {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.rightfooter {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: column;
+
+
+}
+
+ .logopic img {
+    mix-blend-mode: multiply;
+    height: 50px;
+}
+
+
+.rightfooter .faicons {
+    display: flex;
+    flex-direction: row;
+    row-gap: 30px;
+    justify-content: space-between;
+    margin-top: 2px;
+    cursor: pointer;
+    transition: all .50s ease;
+
+}
+
+
+
+.faicons i:hover {
+    transform: translateY(-4px);
+}
+
+
+.rightfooter h2{
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 35px;
+
 }
