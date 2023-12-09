@@ -44,23 +44,23 @@ const validateInputs = () => {
     const messageValue = message.value.trim();
 
     if (nameValue === '') {
-        setError(name, 'Name is required');
+        setError(name, 'Name is required!');
     } else {
         setSuccess(name);
     }
 
     if (emailValue === '') {
-        setError(email, 'Email is required');
+        setError(email, 'Email is required!');
     } else if (!isValidEmail(emailValue)) {
-        setError(email, 'Provide a valid email address');
+        setError(email, 'Provide a valid email address!');
     } else {
         setSuccess(email);
     }
 
     if(numberValue === ''){
-        setError(number, 'Number is required');
+        setError(number, 'Number is required!');
     }else if(!isValidNumber(numberValue)){
-        setError(number,'This field should only contain numbers');
+        setError(number,'This field should only contain numbers1');
     }else{
         setSuccess(number);
     }
@@ -68,7 +68,7 @@ const validateInputs = () => {
     if (messageValue === '') {
         setError(message, 'Please leave your message!');
     } else if (messageValue.length < 20) {
-        setError(message, 'Your message must be at least 20 characters');
+        setError(message, 'Your message must be at least 20 characters!');
     } else {
         setSuccess(message);
     }

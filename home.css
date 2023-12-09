@@ -39,7 +39,7 @@
 
 
 .navbar ul li a:hover{
-    color:rgb(248, 207, 5);
+    color:rgb(243, 246, 79);
 }
 
 .row {
@@ -63,6 +63,7 @@ h1 {
     font-family: serif;
     font-weight: lighter;
     text-align: center;
+    text-shadow: 8px 8px 15px rgba(0, 0, 0, 0.7);
 }
 
 p {
@@ -70,28 +71,34 @@ p {
     font-size: 30px;
     margin-top: 5px;
     font-family: 'Times New Roman', Times, serif;
-    font-weight: lighter;
+    font-weight: 550;
     text-align: center;
-    letter-spacing: 2px;
-    font-style: italic;
+    text-shadow: 8px 8px 15px rgba(0, 0, 0, 0.7);
+    letter-spacing: px;
 }
 
 button {
     width: 180px;
     height: 50px;
-    color: #fff;
-    font-size: 15px;
+    color: black;
+    font-size: 18px;
     font-family: serif;
-    font-weight: normal;
+    font-weight: bold;
     padding: 12px;
-    background: transparent;
+    background: white;
     border: 2px solid #f0f0f0;
     border-color: #fff;
     border-radius: 20px;
     margin-top: 50px;
     text-align: center;
+    box-shadow: #000;
 }
 
+button:hover {
+    background:transparent;
+    color: white;
+    cursor: pointer;
+}
 
 .navbar {
     display: flex;
@@ -103,7 +110,7 @@ button {
     width: 130px;
     height: 50px;
     color: #fff;
-    font-size: 15px;
+    font-size: 18px;
     font-family: serif;
     font-weight: normal;
     padding: 12px;
@@ -112,4 +119,10 @@ button {
     border-color: #fff;
     border-radius: 20px;
     margin-top: 50px;
+}
+
+.navbar nav input[type="submit"]:hover {
+    background-color: #fff;
+    color: #000;
+    cursor: pointer;
 }

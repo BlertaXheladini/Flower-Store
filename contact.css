@@ -44,11 +44,11 @@
 .container .contactInfo{
     width: 50vh;
     padding: 40px;
-    background: white;
+    background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), transparent;
     margin-left: 20px;
     border: none;
     border-radius: 20px;
-    height: 62vh;
+    height: 100%;
 }
 .container .contactInfo h2{
     font-size: 30px;
@@ -82,7 +82,7 @@
 }
 .container .contactInfo .box .text h3{
     font-weight: 550;
-    color: rgb(128, 11, 11);
+    color:green;
     margin-bottom: 10%;
 }
 
@@ -90,11 +90,10 @@
     width:40%;
     padding: 40px;
     height: fit-content;
-    background: white;
+    background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), transparent;
     margin-left: 20px;
     border: none;
     border-radius: 20px;
-
 }
 
 .contactForm h2{
@@ -118,6 +117,11 @@
     margin: 10px 0;
 }
 
+.contactForm .input input:hover,
+.contactForm .input textarea:hover {
+    border-color: rgba(139, 0, 0, 0.7);
+}
+
 button{
     display: inline-block;
     padding: 12px 24px;
@@ -128,14 +132,23 @@ button{
     cursor: pointer;
     width: fit-content;
     height: 40px;
+    margin-top: 3%;
+}
+button:hover{
+        transform: scale(1.02); 
+        transition: transform 0.3s ease;  
+        box-shadow: 0 0 10px rgba(139, 0, 0, 0.7);
 }
 
 .input input:focus{
     outline: 0;
 }
 
-.input.success input
-{
+.input.success input{
+    border-color: green;
+}
+
+.contactForm .input.success textarea {
     border-color: green;
 }
 
@@ -144,7 +157,13 @@ button{
     border-color: red;
 }
 
-.input.error{
+.input .error{
     color: red;
-    font-size: 15px;
+    font-size: 14px;
+    font-family: serif;
+    padding-left: 5%;
 }
+.input.error .input-textarea {
+    padding-left: 5%;
+}
+
