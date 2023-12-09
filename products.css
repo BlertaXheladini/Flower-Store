@@ -11,9 +11,52 @@
     scroll-behavior: smooth;
 }
 
+
 body {
+    position: relative;
+    height: 100%;
     background-color: var(--green);
 }
+
+body {
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    margin: 0;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+section h2 {
+    text-transform: uppercase;
+    text-align: flex-strat;
+    text-decoration: none;
+    font-size: 20px;
+    color: var(--brown);
+    padding-bottom: 15px;
+
+}
+
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 50%;
+    object-fit: cover;
+}
+
+
 
 main {
     background-color: var(--beige);
@@ -21,7 +64,7 @@ main {
 
 }
 
- main img {
+main img {
 
     height: 200px;
     width: auto;
@@ -71,7 +114,7 @@ main {
 h1 {
     display: flex;
     justify-content: center;
-    font-size: 50px;
+    font-size: 60px;
     line-height: 60px;
     margin-top: 30px;
     color: transparent;
@@ -89,7 +132,7 @@ h1 {
 }
 
 
- main h2 {
+main h2 {
     text-transform: uppercase;
     text-align: center;
     text-decoration: none;
@@ -213,7 +256,7 @@ a:hover {
 
 }
 
- .logopic img {
+.logopic img {
     mix-blend-mode: multiply;
     height: 50px;
 }
@@ -237,7 +280,7 @@ a:hover {
 }
 
 
-.rightfooter h2{
+.rightfooter h2 {
     text-transform: uppercase;
     text-decoration: none;
     font-size: 35px;
