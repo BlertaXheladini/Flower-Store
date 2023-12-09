@@ -38,7 +38,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 30px ;
+    margin-top: 30px;
 }
 
 .container .contactInfo{
@@ -48,7 +48,7 @@
     margin-left: 20px;
     border: none;
     border-radius: 20px;
-    height: 65vh;
+    height: 62vh;
 }
 .container .contactInfo h2{
     font-size: 30px;
@@ -74,7 +74,6 @@
 }
 .container .contactInfo .box .text{
     display: flex;
-
     font-weight: 500;
     font-size: 16px;
     color: black;
@@ -90,7 +89,7 @@
 .contactForm{
     width:40%;
     padding: 40px;
-    height: 65vh;
+    height: fit-content;
     background: white;
     margin-left: 20px;
     border: none;
@@ -106,23 +105,19 @@
 }
 
 .contactForm .input{
-    position: relative;
-    width: 100%;
-    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
 }
 
 .contactForm .input input , textarea{
     width: 100%;
     padding: 12px;
     border-radius: 8px;
-    border: none;
+    border: 2px solid #f0f0f0;
     font-size: 16px;
     margin: 10px 0;
-    border: none;
-    border-bottom: 2px solid #333;
-    outline: none;
-    box-shadow: none;
 }
+
 button{
     display: inline-block;
     padding: 12px 24px;
@@ -133,4 +128,23 @@ button{
     cursor: pointer;
     width: fit-content;
     height: 40px;
+}
+
+.input input:focus{
+    outline: 0;
+}
+
+.input.success input
+{
+    border-color: green;
+}
+
+.input.error input,
+.input.error textarea{
+    border-color: red;
+}
+
+.input.error{
+    color: red;
+    font-size: 15px;
 }

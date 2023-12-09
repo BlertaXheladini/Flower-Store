@@ -18,7 +18,7 @@ body{
 .container{
     position: relative;
     width: 400px;
-    height: 400px;
+    height: fit-content;
     border-radius: 5%;
     background:white;
     color:black;
@@ -58,12 +58,14 @@ body{
     justify-content: space-between;
     font-size: 14.5px;
     margin: -15px 0 15px;
+    margin-top: 10%;
 }
 .container .forma .terms{
     display: flex;
     justify-content:center ;
     font-size: 14.5px;
     margin: -15px 0 15px;;
+    margin-top: 10%;
 }
 .forgot-remember label input {
     accent-color: #fff;
@@ -105,3 +107,20 @@ body{
     text-decoration: underline;
 }
 
+.inputi input:focus{
+    outline: 0;
+}
+
+.inputi.success input
+{
+    border-color: green;
+}
+
+.inputi.error input{
+    border-color: red;
+}
+
+.inputi.error{
+    color: red;
+    font-size: 15px;
+}
