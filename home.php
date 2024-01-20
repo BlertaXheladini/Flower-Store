@@ -17,20 +17,20 @@
         <div class="container">
             <div class="navbar">
                 <ul>
-                    <li><a href="home.html">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="products.html">Products</a></li>
-                    <li><a href="contact.html">Contacts</a></li>
+                    <li><a href="home.php">Home</a></li>
+                    <li><a href="about.php">About Us</a></li>
+                    <li><a href="products.php">Products</a></li>
+                    <li><a href="contact.php">Contacts</a></li>
                 </ul>
                 <nav>
-                    <input type="submit" value="Sign In" onclick="window.location.href = 'signin.html'" />
+                    <input type="submit" value="Sign In" onclick="window.location.href = 'signin.php'" />
                 </nav>
             </div>
             <div class="row">
                 <div class="title">
                     <h1>FLARISS</h1>
                     <p>Spring flower bouquet for you...</p>
-                    <a href="products.html"> <button type="button">Shop now </button></a>
+                    <a href="products.php"> <button type="button">Shop now </button></a>
                 </div>
             </div>
         </div>

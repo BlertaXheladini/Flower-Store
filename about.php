@@ -11,17 +11,6 @@
 </head>
 
 <body>
-
-    <header>
-        <nav class="Navbar">
-
-            <a href="home.html"></a>
-            <a href="about.html"></a>
-            <a href="products.html"></a>
-            <a href="contact.html"></a>
-        </nav>
-    </header>
-
     <body>
         <div class="c1">
             <div class="head">
@@ -92,7 +81,7 @@
 
 
             <div class="leftfooter">
-                <div> <a href="about.html">about us</a>
+                <div><a href="about.php">about us</a>
                     <p>Payment and transport</p>
                     <P>Blog</P>
 
@@ -100,7 +89,7 @@
             </div>
 
             <div class="mainfooter">
-                <div> <a href="products.html">catalog</a>
+                <div> <a href="products.php">catalog</a>
                     <p>Sales</p>
                     <P>Type</P>
                 </div>
@@ -108,7 +97,7 @@
 
 
             <div class="mainfooter2">
-                <div> <a href="contact.html">Contact Us</a></div>
+                <div> <a href="contact.php">Contact Us</a></div>
                 <div class="phonefooter">Phone:</div>
                 <p> +38349264030</p>
                 <div class="emailfooter">Email:</div>

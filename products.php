@@ -298,16 +298,16 @@
 
 
         <div class="leftfooter">
-            <div> <a href="home.html">Home</a>
+            <div> <a href="home.php">Home</a>
                 <br>
                 <br>
-                <a href="signin.html">Sign Up</a>
+                <a href="signin.php">Sign Up</a>
 
             </div>
         </div>
 
         <div class="mainfooter">
-            <div> <a href="about.html">About Us</a>
+            <div> <a href="about.php">About Us</a>
                 <p>Payment and transport</p>
                 <P>Blog</P>
             </div>
@@ -315,7 +315,7 @@
 
 
         <div class="mainfooter2">
-            <div> <a href="contact.html">Contact Us</a></div>
+            <div> <a href="contact.php">Contact Us</a></div>
             <div class="phonefooter">Phone:</div>
             <p> +38349264030</p>
             <div class="emailfooter">Email:</div>
