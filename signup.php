@@ -1,12 +1,17 @@
 <?php
-function insertion() {
-    $sql = "INSERT INTO signup (username, email, password, password2) VALUES (?, ?, ?, ?)";
-    $stm = $this->dbconn->prepare($sql);
-    $stm->execute([$this->username, $this->email, $this->password, $this->password2]);
-    echo "<script>
-        alert('Data is inserted successfully'); 
-        document.location='signin.php';
-    </script>";
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+require_once('modeliStudenti.php');
+require_once('insert.php');
+
+if (isset($_POST['save'])) {
+    $regj = new Studenti();
+    $regj->setUsername($_POST['username']);
+    $regj->setEmail($_POST['email']);
+    $regj->setPassword($_POST['password']);
+    $regj->setPassword2($_POST['password2']);
+    $regj->insert();
 }
 ?>
 
@@ -21,7 +26,7 @@ function insertion() {
     <div class="container">
         <div class="forma signup">
             <h1>sign up to flariss store</h1>
-            <form id="form" action="insert_data.php" method="POST">
+            <form id="form" action="signup.php" method="POST">
                 <div class="inputi">
                     <input type="text" name="username" placeholder="Username">
                     <div class="error"></div>
@@ -36,13 +41,6 @@ function insertion() {
                 </div>
                 <div class="inputi">
                     <input type="password" name="password2" placeholder="Verify your password">
-                    <div class="error"></div>
-                </div>
-                <div class="terms">
-                    <label>
-                        <input type="checkbox" id="terms" name="terms" required>
-                        <a href="#"> I agree to the terms & conditions</a>
-                    </label>
                     <div class="error"></div>
                 </div>
                 <button type="submit" class="btn" name="save">Sign Up</button>
