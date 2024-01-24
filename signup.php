@@ -1,27 +1,59 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+include("connection.php");
 
-require_once('modeliStudenti.php');
-require_once('insert.php');
+class UserManager {
+    private $conn;
 
-if (isset($_POST['save'])) {
-    $regj = new Studenti();
-    $regj->setUsername($_POST['username']);
-    $regj->setEmail($_POST['email']);
-    $regj->setPassword($_POST['password']);
-    $regj->setPassword2($_POST['password2']);
-    $regj->insert();
+    public function __construct($connection) {
+        $this->conn = $connection;
+    }
+
+    public function registerUser($username, $email, $password) {
+        $username = $this->sanitizeInput($username);
+        $email = $this->sanitizeInput($email);
+        $password = $this->sanitizeInput($password);
+
+        $sql = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("sss", $username, $email, $password);
+
+        if ($stmt->execute()) {
+            echo "Registration successful!";
+            header("Location: signin.php");
+            exit();
+        } else {
+            echo "Error: " . $stmt->error;
+        }
+    }
+
+    private function sanitizeInput($data) {
+        return mysqli_real_escape_string($this->conn, htmlspecialchars(trim($data)));
+    }
 }
+
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["save"])) {
+    $userManager = new UserManager($conn);
+
+    $username = $_POST["username"];
+    $email = $_POST["email"];
+    $password = $_POST["password"];
+    $password2 = $_POST["password2"];
+
+    $userManager->registerUser($username, $email, $password);
+}
+
+$conn->close();
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <link rel="stylesheet" type="text/css" href="signIn.css" />
     <script defer src="./signup.js"></script>
     <title>SignIn</title>
 </head>
+
 <body>
     <div class="container">
         <div class="forma signup">
