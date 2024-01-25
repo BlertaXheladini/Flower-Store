@@ -57,7 +57,7 @@ $conn->close();
 
 <head>
     <link rel="stylesheet" type="text/css" href="signIn.css" />
-    <script defer src="./signin.js"></script>
+    <script defer src="signin.js"></script>
     <title>SignIn</title>
 </head>
 
@@ -67,11 +67,11 @@ $conn->close();
             <h1>sign in to flariss store</h1>
             <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                 <div class="inputi">
-                    <input type="text" name="username" placeholder="Username">
+                    <input type="text" name="username" id="username" placeholder="Username">
                     <div class="error"></div>
                 </div>
                 <div class="inputi">
-                    <input type="password" name="password" placeholder="Password">
+                    <input type="password" name="password" id="password" placeholder="Password">
                     <div class="error"></div>
                 </div>
                 <div class="forgot-remember">

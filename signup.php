@@ -50,6 +50,7 @@ $conn->close();
 
 <head>
     <link rel="stylesheet" type="text/css" href="signIn.css" />
+    <script defer src="signup.js"></script>
     <title>SignIn</title>
 </head>
 
@@ -60,19 +61,19 @@ $conn->close();
             <h1>sign up to flariss store</h1>
             <form id="form" action="signup.php" method="POST">
                 <div class="inputi">
-                    <input type="text" name="username" placeholder="Username">
+                    <input type="text" name="username" id="username" placeholder="Username">
                     <div class="error"></div>
                 </div>
                 <div class="inputi">
-                    <input type="text" name="email" placeholder="Email">
+                    <input type="text" name="email" id="email" placeholder="Email">
                     <div class="error"></div>
                 </div>
                 <div class="inputi">
-                    <input type="password" name="password" placeholder="Password">
+                    <input type="password" name="password" id="password" placeholder="Password">
                     <div class="error"></div>
                 </div>
                 <div class="inputi">
-                    <input type="password" name="password2" placeholder="Verify your password">
+                    <input type="password" name="password2" id="password2" placeholder="Verify your password">
                     <div class="error"></div>
                 </div>
                 <div class="terms">

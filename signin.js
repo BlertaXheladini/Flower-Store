@@ -14,6 +14,7 @@
         errorDisplay.innerText = message;
         inputControl.classList.add('error');
         inputControl.classList.remove('success');
+        hasErrors=true;
     };
 
     const setSuccess = element => {
@@ -28,18 +29,26 @@
     const validateInputs = () => {
         const usernameValue = username.value.trim();
         const passwordValue = password.value.trim();
+        let hasErrors = false
 
         if (usernameValue === '') {
             setError(username, 'Username is required!');
+            hasErrors = true
         } else {
             setSuccess(username);
+            hasErrors = false
         }
 
         if (passwordValue === '') {
             setError(password, 'Password is required!');
+            hasErrors = true
         } else if (passwordValue.length < 8) {
             setError(password, 'Password must be at least 8 characters!');
+            hasErrors = true
         } else {
             setSuccess(password);
+            hasErrors = false
         }
+        console.log(hasErrors)
+        return hasErrors;
     };
