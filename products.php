@@ -1,11 +1,39 @@
-
 <?php
-session_start();
+include 'connection.php';
 
-    if (empty($_SESSION['username'])) {
-          header("Location: signin.php");
+// CREATE
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["create"])) {
+    $name = $_POST["name"];
+    $price = $_POST["price"];
+
+    $sql = "INSERT INTO products (name, price) VALUES ('$name', '$price')";
+    $conn->query($sql);
 }
+
+// READ
+$sql = "SELECT * FROM products";
+$result = $conn->query($sql);
+
+// UPDATE
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["update"])) {
+    $id = $_POST["id"];
+    $name = $_POST["name"];
+    $price = $_POST["price"];
+
+    $sql = "UPDATE products SET name='$name', price='$price' WHERE id=$id";
+    $conn->query($sql);
+}
+
+// DELETE
+if (isset($_GET["delete"])) {
+    $id = $_GET["delete"];
+    $sql = "DELETE FROM products WHERE id=$id";
+    $conn->query($sql);
+}
+
+$conn->close();
 ?>
+
 
 
 

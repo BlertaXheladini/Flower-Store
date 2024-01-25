@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
     $sql = "INSERT INTO products (name, price, picture) VALUES ('$name', '$price', '$image')";
     $conn->query($sql);
 
-   
+    // Redirect back to the form or any other page
 }
 
 $conn->close();
@@ -39,7 +39,7 @@ $conn->close();
         <input type="text" name="name" required><br>
 
         <label for="price">Product Price:</label>
-        <input type="number" name="price" step="0.01" required><br>
+        <input type="" name="price" step="0.01" required><br>
 
         <label for="image">Product Image:</label>
         <input type="file" name="image" accept="image/*" required><br>

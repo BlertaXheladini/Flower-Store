@@ -91,7 +91,7 @@ session_start();
 
 
             <div class="leftfooter">
-                <div><a href="about.php">about us</a>
+                <div><a href="home.php">Home</a>
                     <p>Payment and transport</p>
                     <P>Blog</P>
 

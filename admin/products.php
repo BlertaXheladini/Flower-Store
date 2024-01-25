@@ -41,6 +41,18 @@
             font-size: 14px;
             border-radius: 3px;
         }
+        .update-btn {
+            position: absolute;
+            top: 40px;
+            right: 10px;
+            background-color:#4da6ff;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 14px;
+            border-radius: 3px;
+        }
     </style>
 </head>
 
@@ -49,9 +61,11 @@
 <h1><a href="insert.php"> Shtoni</a></h1>
     <?php
     include '../connection.php';
+    
+    session_start();
 
 
-    // Retrieve all products from the database
+   
     $sql = "SELECT * FROM products";
     $result = $conn->query($sql);
 
@@ -69,14 +83,16 @@
             echo "</form>";
     
             // Update Form
-            echo "<form method='post' action='update.php' style='display: inline;'>";
-            echo "<input type='hidden' name='updateId' value='{$row['ID']}'>";
-            echo "<button type='submit' class='update-btn'>Update</button>";
-            echo "</form>";
+   
+echo "<form method='get' action='update.php' style='display: inline;'>";
+echo "<input type='hidden' name='updateId' value='{$row['ID']}'>";
+echo "<button type='submit' class='update-btn'>Update</button>";
+echo "</form>";
+
     
             echo "</div>";
         }
-    
+
     
     } else {
         echo "<p>No products available.</p>";
