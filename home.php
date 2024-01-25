@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+    if (empty($_SESSION['username'])) {
+          header("Location: signin.php");
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,6 +33,7 @@
                 </ul>
                 <nav>
                     <input type="submit" value="Sign In" onclick="window.location.href = 'signin.php'" />
+                    <input type="submit" value="Sign Out" onclick="window.location.href = 'signout.php'" />
                 </nav>
             </div>
             <div class="row">

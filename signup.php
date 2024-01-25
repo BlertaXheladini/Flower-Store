@@ -55,6 +55,7 @@ $conn->close();
 </head>
 
 <body>
+
     <div class="container">
         <div class="forma signup">
             <h1>sign up to flariss store</h1>
@@ -75,6 +76,13 @@ $conn->close();
                     <input type="password" name="password2" placeholder="Verify your password">
                     <div class="error"></div>
                 </div>
+                <div class="terms">
+                    <label>
+                        <input type="checkbox" id="terms" name="terms" required>
+                        <a href="#"> I agree to the terms & conditions</a>
+                    </label>
+                    <div class="error"></div>
+                </div>
                 <button type="submit" class="btn" name="save">Sign Up</button>
                 <div class="register">
                     <p>Already have an account?<a href="signin.php"> Sign In</a></p>
@@ -84,3 +92,4 @@ $conn->close();
     </div>
 </body>
 </html>
+
