@@ -50,7 +50,7 @@ $conn->close();
 
 <head>
     <link rel="stylesheet" type="text/css" href="signIn.css" />
-    <script defer src="./signup.js"></script>
+    <script src="signup.js"></script>
     <title>SignIn</title>
 </head>
 

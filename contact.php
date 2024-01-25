@@ -1,15 +1,67 @@
+<?php
+include("connection.php");
+
+class Messages {
+    private $conn;
+
+    public function __construct($connection) {
+        $this->conn = $connection;
+    }
+
+    public function contactUs($name, $number, $email, $message) {
+        $name = $this->sanitizeInput($name);
+        $number = $this->sanitizeInput($number);
+        $email = $this->sanitizeInput($email);
+        $message = $this->sanitizeInput($message);
+
+        $sql = "INSERT INTO messages (name, number, email, messages) VALUES (?, ?, ?, ?)";
+        $stmt = $this->conn->prepare($sql);
+
+        if (!$stmt) {
+            die("Error: " . $this->conn->error);
+        }
+
+        $stmt->bind_param("ssss", $name, $number, $email, $message);
+
+        if ($stmt->execute()) {
+            echo "Message sent successfully, thank you for your review";
+            header("Location: contact.php");
+            exit();
+        } else {
+            echo "Error: " . $stmt->error;
+        }
+    }
+
+    private function sanitizeInput($data) {
+        return mysqli_real_escape_string($this->conn, htmlspecialchars(trim($data)));
+    }
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["save"])) {
+    $message = new Messages($conn);
+
+    $name = $_POST["name"];
+    $number = $_POST["number"];
+    $email = $_POST["email"];
+    $messageContent = $_POST["message"];
+
+    $message->contactUs($name, $number, $email, $messageContent);
+}
+
+$conn->close();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <link rel="stylesheet" href="contact.css" type="text/css">
-    <script defer src="./contact.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <title>Contact Us</title>
 </head>
 
 <body>
-    <section class = "contact">
+    <section class="contact">
         <div class="content">
             <h2>Contact Us</h2>
             <p>We love hearing from our customers! Whether you have a question about our stunning bouquets, need assistance with an order, or just want to say hello, we're here for you.</p>
@@ -35,41 +87,38 @@
 
                 <div class="box">
                     <div class="icon"><i class="fa fa-envelope" aria-hidden="true"></i></div>
-                        <div class="text">
-                            <h3>Email</h3>
-                            <p>flariss@hotmail.com</p>
+                    <div class="text">
+                        <h3>Email</h3>
+                        <p>flariss@hotmail.com</p>
                     </div>
-                </div>
-                </div>
-
-                <div class="contactForm">
-                    <form id="form" action="">
-                        <h2>leave a message</h2>
-                        <div class="input">
-                            <input type="text" id="name" placeholder="Name">
-                            <div class="error"></div>
-                        </div>
-                        <div class="input">
-                            <input type="text" id="number" placeholder="Phone Number">
-                            <div class="error"></div>
-                        </div>
-                        <div class="input">
-                            <input type="text" id="email" placeholder="E-mail">
-                            <div class="error"></div>
-                        <div class="inputi">
-                            <textarea name="Message" id="message" placeholder="Message"></textarea>
-                            <div class="error"></div>
-                        </div> 
-                        <button type="submit" class="btn">Send message</button>
-                    </div>
-                    </form>
                 </div>
             </div>
 
+            <div class="contactForm">
+                <form id="form" action="contact.php" method="post">
+                    <h2>leave a message</h2>
+                    <div class="input">
+                        <input type="text" name="name" placeholder="Name">
+                        <div class="error"></div>
+                    </div>
+                    <div class="input">
+                        <input type="text" name="number" placeholder="Phone Number">
+                        <div class="error"></div>
+                    </div>
+                    <div class="input">
+                        <input type="text" name="email" placeholder="E-mail">
+                        <div class="error"></div>
+                    </div>
+                    <div class="inputi">
+                        <textarea name="message" placeholder="Message"></textarea>
+                        <div class="error"></div>
+                    </div>
+                    <button type="submit" class="btn" name="save">Send message</button>
+                </form>
+            </div>
         </div>
-    </section>
-
-
+    </div>
+</section>
 </body>
 
 </html>
