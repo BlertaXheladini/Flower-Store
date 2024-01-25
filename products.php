@@ -1,3 +1,15 @@
+
+<?php
+session_start();
+
+    if (empty($_SESSION['username'])) {
+          header("Location: signin.php");
+}
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -134,77 +146,34 @@
         <div class="products">
             <div class="bestseller">
 
-                <div class="box">
-                    <img src="pictures/bestseller1.jpeg" alt="">
-                    <h4>Rose Bouqet</h4>
-                    <h5>$20.00</h5>
-                    <div class="top">
-                        <p>On Top</p>
-                    </div>
-                    <div class="bbtn">
-                        <a href="#">Add to cart</a>
-                    </div>
-                </div>
+        
+                <?php
+        include 'connection.php';
 
+        // Retrieve all products from the database
+        $sql = "SELECT * FROM products";
+        $result = $conn->query($sql);
 
-                <div class="box">
-                    <img src="pictures/bestseller2.jpeg" alt="">
-                    <h4>Sun Flower Bouqett</h4>
-                    <h5>$18.00</h5>
-                    <div class="top">
-                        <p>On Top</p>
-                    </div>
-                    <div class="bbtn">
-                        <a href="#">Add to cart</a>
-                    </div>
-                </div>
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                echo "<div class='box'>";
+                echo "<img src='pictures/{$row['picture']}' alt='{$row['name']}'>";
+                echo "<h4>{$row['name']}</h4>";
+                echo "<h5>\${$row['price']}</h5>";
+                echo "<div class='top'>";
+                echo "<p>Limited</p>";
+                echo "</div>";
+                echo "<div class='bbtn'>";
+                echo "<a href='#'>Add to cart</a>";
+                echo "</div>";
+                echo "</div>";
+            }
+        } else {
+            echo "<p>No products available.</p>";
+        }
 
-                <div class="box">
-                    <img src="pictures/bestseller3.jpeg" alt="">
-                    <h4>White Tulips</h4>
-                    <h5>$25.00</h5>
-                    <div class="top">
-                        <p>On Top</p>
-                    </div>
-                    <div class="bbtn">
-                        <a href="#">Add to cart</a>
-                    </div>
-                </div>
-
-                <div class="box">
-                    <img src="pictures/bestseller4.jpeg" alt="">
-                    <h4>Orange Roses</h4>
-                    <h5>$15.00</h5>
-                    <div class="top">
-                        <p>On Top</p>
-                    </div>
-                    <div class="bbtn">
-                        <a href="#">Add to cart</a>
-                    </div>
-                </div>
-                <div class="box">
-                    <img src="pictures/bestseller5.jpeg" alt="">
-                    <h4>Small Bouqet</h4>
-                    <h5>$10.00</h5>
-                    <div class="top">
-                        <p>On Top</p>
-                    </div>
-                    <div class="bbtn">
-                        <a href="#">Add to cart</a>
-                    </div>
-                </div>
-
-                <div class="box">
-                    <img src="pictures/bestseller6.jpeg" alt="">
-                    <h4>Pink Tulips</h4>
-                    <h5>$28.00</h5>
-                    <div class="top">
-                        <p>On Top</p>
-                    </div>
-                    <div class="bbtn">
-                        <a href="#">Add to cart</a>
-                    </div>
-                </div>
+        $conn->close();
+        ?>
 
             </div>
             <h2>Gifts </h2>

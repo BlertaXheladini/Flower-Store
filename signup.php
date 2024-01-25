@@ -50,7 +50,6 @@ $conn->close();
 
 <head>
     <link rel="stylesheet" type="text/css" href="signIn.css" />
-    <script defer src="./signup.js"></script>
     <title>SignIn</title>
 </head>
 
@@ -59,7 +58,7 @@ $conn->close();
     <div class="container">
         <div class="forma signup">
             <h1>sign up to flariss store</h1>
-            <form id="form" action="insert_data.php" method="POST">
+            <form id="form" action="signup.php" method="POST">
                 <div class="inputi">
                     <input type="text" name="username" placeholder="Username">
                     <div class="error"></div>
