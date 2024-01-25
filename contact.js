@@ -33,7 +33,7 @@ const isValidEmail = email => {
 };
 
 const isValidNumber = value => {
-    const numberRegex = /^\s*\d+\s*$/;
+    const numberRegex = /^\d+$/;
     return numberRegex.test(number);
 };
 
@@ -60,7 +60,7 @@ const validateInputs = () => {
     if(numberValue === ''){
         setError(number, 'Number is required!');
     }else if(!isValidNumber(numberValue)){
-        setError(number,'This field should only contain numbers1');
+        setError(number,'This field should only contain numbers');
     }else{
         setSuccess(number);
     }

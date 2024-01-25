@@ -157,7 +157,7 @@ button:hover{
     border-color: red;
 }
 
-.input .error{
+.input .input-textarea .error{
     color: red;
     font-size: 14px;
     font-family: serif;

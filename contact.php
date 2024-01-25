@@ -57,6 +57,7 @@ $conn->close();
 <head>
     <link rel="stylesheet" href="contact.css" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script defer src="contact.js"></script>
     <title>Contact Us</title>
 </head>
 
@@ -98,19 +99,19 @@ $conn->close();
                 <form id="form" action="contact.php" method="post">
                     <h2>leave a message</h2>
                     <div class="input">
-                        <input type="text" name="name" placeholder="Name">
+                        <input type="text" name="name" id="name" placeholder="Name">
                         <div class="error"></div>
                     </div>
                     <div class="input">
-                        <input type="text" name="number" placeholder="Phone Number">
+                        <input type="text" name="number" id="number" placeholder="Phone Number">
                         <div class="error"></div>
                     </div>
                     <div class="input">
-                        <input type="text" name="email" placeholder="E-mail">
+                        <input type="text" name="email" id="email" placeholder="E-mail">
                         <div class="error"></div>
                     </div>
-                    <div class="inputi">
-                        <textarea name="message" placeholder="Message"></textarea>
+                    <div class="input">
+                        <textarea name="message" placeholder="Message" name="message" id="message" ></textarea>
                         <div class="error"></div>
                     </div>
                     <button type="submit" class="btn" name="save">Send message</button>
