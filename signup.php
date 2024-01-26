@@ -13,7 +13,7 @@ class UserManager {
         $email = $this->sanitizeInput($email);
         $password = $this->sanitizeInput($password);
 
-        $sql = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
+        $sql = "INSERT INTO users (username, email, password) VALUES (?, ?, ? )";
         $stmt = $this->conn->prepare($sql);
         $stmt->bind_param("sss", $username, $email, $password);
 
