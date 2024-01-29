@@ -1,38 +1,10 @@
 <?php
-include 'connection.php';
+session_start();
 
-// CREATE
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["create"])) {
-    $name = $_POST["name"];
-    $price = $_POST["price"];
 
-    $sql = "INSERT INTO products (name, price) VALUES ('$name', '$price')";
-    $conn->query($sql);
-}
 
-// READ
-$sql = "SELECT * FROM products";
-$result = $conn->query($sql);
-
-// UPDATE
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["update"])) {
-    $id = $_POST["id"];
-    $name = $_POST["name"];
-    $price = $_POST["price"];
-
-    $sql = "UPDATE products SET name='$name', price='$price' WHERE id=$id";
-    $conn->query($sql);
-}
-
-// DELETE
-if (isset($_GET["delete"])) {
-    $id = $_GET["delete"];
-    $sql = "DELETE FROM products WHERE id=$id";
-    $conn->query($sql);
-}
-
-$conn->close();
 ?>
+
 
 
 
@@ -169,127 +141,63 @@ $conn->close();
     </script>
 
     <main>
+    <?php
+include 'connection.php';
 
-        <h2> Best Seller</h2>
-        <div class="products">
-            <div class="bestseller">
+// Fetch Best Seller products
+$sqlBestSeller = "SELECT * FROM products WHERE category = 'bestseller'";
+$resultBestSeller = $conn->query($sqlBestSeller);
 
-        
-                <?php
-        include 'connection.php';
+if ($resultBestSeller->num_rows > 0) {
+    echo "<h2>Best Seller</h2>";
+    echo "<div class='bestseller'>";
+    while ($row = $resultBestSeller->fetch_assoc()) {
+        echo "<div class='box'>";
+        echo "<img src='pictures/{$row['picture']}' alt='{$row['name']}'>";
+        echo "<h4>{$row['name']}</h4>";
+        echo "<h5>\${$row['price']}</h5>";
+        echo "<div class='top'>";
+        echo "<p>Limited</p>";
+        echo "</div>";
+        echo "<div class='bbtn'>";
+        echo "<a href='#'>Add to cart</a>";
+        echo "</div>";
+        echo "</div>";
+    }
+    echo "</div>";
+} else {
+    echo "<p>No Best Seller products available.</p>";
+}
 
-        // Retrieve all products from the database
-        $sql = "SELECT * FROM products";
-        $result = $conn->query($sql);
+$sqlGiftBox = "SELECT * FROM products WHERE category = 'giftbox'";
+$resultGiftBox = $conn->query($sqlGiftBox);
 
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                echo "<div class='box'>";
-                echo "<img src='pictures/{$row['picture']}' alt='{$row['name']}'>";
-                echo "<h4>{$row['name']}</h4>";
-                echo "<h5>\${$row['price']}</h5>";
-                echo "<div class='top'>";
-                echo "<p>Limited</p>";
-                echo "</div>";
-                echo "<div class='bbtn'>";
-                echo "<a href='#'>Add to cart</a>";
-                echo "</div>";
-                echo "</div>";
-            }
-        } else {
-            echo "<p>No products available.</p>";
-        }
+if ($resultGiftBox->num_rows > 0) {
+    echo "<h2>Gifts </h2>";
+    echo "<div class='gifts'>";
+    while ($row = $resultGiftBox->fetch_assoc()) {
+        echo "<div class='box'>";
+        echo "<img src='pictures/{$row['picture']}' alt='{$row['name']}'>";
+        echo "<h4>{$row['name']}</h4>";
+        echo "<h5>\${$row['price']}</h5>";
+        echo "<div class='top'>";
+        echo "<p>Limited</p>";
+        echo "</div>";
+        echo "<div class='bbtn'>";
+        echo "<a href='#'>Add to cart</a>";
+        echo "</div>";
+        echo "</div>";
+    }
+    echo "</div>";
+} else {
+    echo "<p>No Gift Box products available.</p>";
+}
 
-        $conn->close();
-        ?>
+$conn->close();
+?>
 
-            </div>
-            <h2>Gifts </h2>
-            <div class="gifts">
-                <div class="box">
-                    <img src="pictures/gifts1.jpeg" alt="">
-                    <h4>Square Box</h4>
-                    <h5>$30.00</h5>
-                    <div class="top">
-                        <p>Limited</p>
-                    </div>
-                    <div class="bbtn">
-                        <a href="#">Add to cart</a>
-                    </div>
-                </div>
-
-                <div class="box">
-                    <img src="pictures/gifts2.jpeg" alt="">
-                    <h4>Heart Box</h4>
-                    <h5>$35.00</h5>
-                    <div class="top">
-                        <p>Limited</p>
-                    </div>
-                    <div class="bbtn">
-                        <a href="#">Add to cart</a>
-                    </div>
-                </div>
-
-                <div class="box">
-                    <img src="pictures/gifts3.jpeg" alt="">
-                    <h4>Circle Box</h4>
-                    <h5>$27.00</h5>
-                    <div class="top">
-                        <p>Limited</p>
-                    </div>
-                    <div class="bbtn">
-                        <a href="#">Add to cart</a>
-                    </div>
-                </div>
-                <div class="box">
-                    <img src="pictures/gifts4.jpeg" alt="">
-                    <h4>Graduation Box</h4>
-                    <h5>$33.00</h5>
-                    <div class="top">
-                        <p>Limited</p>
-                    </div>
-                    <div class="bbtn">
-                        <a href="#">Add to cart</a>
-                    </div>
-                </div>
-
-                <div class="box">
-                    <img src="pictures/gifts5.jpeg" alt="">
-                    <h4>Heart Stick</h4>
-                    <h5>$20.00</h5>
-                    <div class="top">
-                        <p>Limited </p>
-                    </div>
-                    <div class="bbtn">
-                        <a href="#">Add to cart</a>
-                    </div>
-                </div>
-
-
-                <div class="box">
-                    <img src="pictures/gifts6.jpeg" alt="">
-                    <h4>Bag Box</h4>
-                    <h5>$40.00</h5>
-                    <div class="top">
-                        <p>Limited </p>
-                    </div>
-                    <div class="bbtn">
-                        <a href="#">Add to cart</a>
-                    </div>
-                </div>
-            </div>
-
-
-
-        </div>
-        </div>
-
-
-
+      
     </main>
-
-
-
 
     <footer>
 

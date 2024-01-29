@@ -1,8 +1,12 @@
 <?php
 session_start();
 
-    if (empty($_SESSION['username'])) {
-          header("Location: signin.php");
+if(isset($_SESSION['user_id'])){
+   $user_id = $_SESSION['user_id'];
+}else{
+    $user_id = '';
+
+  header("Location: signin.php");
 }
 ?>
 

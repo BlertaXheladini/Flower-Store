@@ -6,6 +6,7 @@ class UserManager {
         $this->conn = $connection;
     }
 
+
     public function loginUser($username, $password) {
         $username = $this->sanitizeInput($username);
         $password = $this->sanitizeInput($password);
