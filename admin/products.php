@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -154,7 +153,7 @@
     // Check if category filter is set
     $category = isset($_GET['category']) ? $_GET['category'] : 'bestseller';
     
-    $sql = "SELECT * FROM products WHERE category='$category'";
+    $sql = "SELECT * FROM products ";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
@@ -172,7 +171,7 @@
             echo "</form>";
 
             // Update Form
-            echo "<form method='get' action='update.php' style='display: inline;'>";
+            echo "<form method='post' action='editproducts.php' style='display: inline;'>";
             echo "<input type='hidden' name='updateId' value='{$row['ID']}'>";
             echo "<button type='submit' class='update-btn'>Update</button>";
             echo "</form>";
@@ -199,7 +198,7 @@
             document.querySelector(`.category-btn[data-category="${category}"]`).classList.add('active');
 
             // Reload the page with the selected category filter
-            window.location.href = `product_list.php?category=${category}`;
+            window.location.href = `products.php?category=${category}`;
         }
     </script>
        <a href="dashboard.php"><button>Go Back to Dashboard</button></a>

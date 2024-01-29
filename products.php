@@ -1,14 +1,7 @@
 <?php
 session_start();
 
-
-
 ?>
-
-
-
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -87,11 +80,7 @@ session_start();
         </div>
 
 
-
-
     </section>
-
-
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
         var swiper = new Swiper(".card_slider", {
@@ -195,13 +184,9 @@ if ($resultGiftBox->num_rows > 0) {
 
 $conn->close();
 ?>
-
-      
+ 
     </main>
-
     <footer>
-
-
         <div class="leftfooter">
             <div> <a href="home.php">Home</a>
                 <br>

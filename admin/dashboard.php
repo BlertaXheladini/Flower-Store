@@ -14,7 +14,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Page Title</title>
+    <title>Admin Panel</title>
     <style>
         body {
             margin: 0;
@@ -83,7 +83,6 @@ session_start();
     </nav>
 
     <main>
-        <!-- Content goes here -->
         <h1>Welccome to Admin panel !</h1>
      
     </main>

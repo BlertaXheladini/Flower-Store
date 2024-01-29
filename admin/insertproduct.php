@@ -19,12 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
     $conn->query($sql);
 
     echo '<script>alert("Product added successfully!");</script>';
-} else {
-    // Product insertion failed, trigger JavaScript alert with error message
-    $error_message = $conn->error;
-    echo '<script>alert("Failed to add product. Error: ' . $error_message . '");</script>';
-
-}
+} 
 
 $conn->close();
 ?>
