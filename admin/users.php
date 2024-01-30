@@ -95,7 +95,7 @@
         echo '<tr><th>ID</th><th>Username</th><th>Email</th><th>Role</th><th>Action</th></tr>';
 
         while ($row = $result->fetch_assoc()) {
-            $userId = isset($row['id']) ? $row['id'] : 'N/A';
+            $userId = isset($row['ID']) ? $row['ID'] : 'N/A';
             $username = isset($row['username']) ? $row['username'] : 'N/A';
             $email = isset($row['email']) ? $row['email'] : 'N/A';
             $role = isset($row['role']) ? $row['role'] : 'N/A';
@@ -105,7 +105,7 @@
             echo "<td>{$username}</td>";
             echo "<td>{$email}</td>";
             echo "<td>{$role}</td>";
-            echo "<td class='action-buttons'><a href='edituser.php?id={$userId}'>Edit</a><a href='deleteuser.php?id={$userId}'>Delete</a></td>";
+            echo "<td class='action-buttons'><a href='editusers.php?id={$userId}'>Edit</a><a href='deleteusers.php?id={$userId}'>Delete</a></td>";
             echo "</tr>";
         }
 

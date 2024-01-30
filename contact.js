@@ -33,8 +33,8 @@ const isValidEmail = email => {
 };
 
 const isValidNumber = value => {
-    const numberRegex = /^\d+$/;
-    return numberRegex.test(number);
+    const numberRegex = /^\s*\d+\s*$/;
+    return numberRegex.test(value);
 };
 
 const validateInputs = () => {
@@ -53,7 +53,7 @@ const validateInputs = () => {
         setError(email, 'Email is required!');
     } else if (!isValidEmail(emailValue)) {
         setError(email, 'Provide a valid email address!');
-    } else {
+    } else
         setSuccess(email);
     }
 
@@ -72,4 +72,4 @@ const validateInputs = () => {
     } else {
         setSuccess(message);
     }
-};
+

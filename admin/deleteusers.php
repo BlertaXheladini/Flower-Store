@@ -15,6 +15,7 @@ if (isset($_GET["id"])) {
     $stmt->close();
 
     echo '<script>alert("User deleted successfully!");</script>';
+    echo '<script>window.open("users.php");</script>';
 } else {
     die("Error: User ID not provided.");
 }
@@ -24,13 +25,13 @@ if (isset($_GET["id"])) {
 <html lang="en">
 
 <head>
-    <!-- Add your head content -->
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete users</title>
 </head>
 
 <body>
-    <div>
-        <a href="users.php"><button>Go Back to Users</button></a>
-    </div>
+  
 </body>
 
 </html>

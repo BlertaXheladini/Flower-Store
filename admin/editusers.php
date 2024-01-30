@@ -4,27 +4,31 @@ include '../connection.php';
 if (isset($_GET["id"])) {
     $id = $_GET["id"];
 
-    $stmt = $conn->prepare("SELECT * FROM users WHERE id = ?");
+    $stmt = $conn->prepare("SELECT * FROM users WHERE ID = ?");
     $stmt->bind_param("i", $id);
     $stmt->execute();
     $result = $stmt->get_result();
 
-    if ($result->num_rows > 0) {
-        $user = $result->fetch_assoc();
-        $stmt->close();
-    } else {
-        die("Error: User not found.");
+    if ($result === false) {
+        die("Error: " . $conn->error);
     }
+
+    $user = $result->fetch_assoc();
+
+    $stmt->close();
 } else {
     die("Error: User ID not provided.");
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["update"])) {
-    $username = $_POST["username"];
-    $email = $_POST["email"];
+if (isset($_POST['update'])) {
 
-    $stmt = $conn->prepare("UPDATE users SET username = ?, email = ? WHERE id = ?");
-    $stmt->bind_param("ssi", $username, $email, $id);
+    $username = $_POST['username'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $role = $_POST['role'];
+
+    $stmt = $conn->prepare("UPDATE users SET username = ?, email = ?, password = ?, role = ? WHERE ID = ?");
+    $stmt->bind_param("ssssi", $username, $email, $password, $role, $id);
     $stmt->execute();
 
     if ($stmt === false) {
@@ -32,7 +36,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["update"])) {
     }
 
     $stmt->close();
-
     echo '<script>alert("User updated successfully!");</script>';
 }
 ?>
@@ -41,25 +44,103 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["update"])) {
 <html lang="en">
 
 <head>
-    <!-- Add your head content -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit User</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #223222;
+            color: #987d67;
+        }
+
+        h2 {
+            color: #987d67;
+        }
+
+        form {
+            margin: 20px 0;
+            padding: 20px;
+            background-color: #cdbcac;
+            border-radius: 5px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+        }
+
+        input[type="file"] {
+            margin-bottom: 40px;
+        }
+
+        input[type="submit"] {
+            background-color: #223222;
+            color: #fff;
+            cursor: pointer;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #00661a;
+        }
+
+        button {
+            background-color: #223222;
+            color: #fff;
+            cursor: pointer;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            margin-top: 10px;
+            margin-right: 10px;
+        }
+
+        button:hover {
+            background-color: #cdbcac;
+        }
+    </style>
 </head>
 
 <body>
     <h2>Edit User</h2>
-    <form action="" method="post">
-        <input type="hidden" name="id" value="<?php echo $user['id']; ?>">
+    <form action="" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="updateId" value="<?php echo isset($_POST['updateId']) ? $_POST['updateId'] : $user['ID']; ?>">
         <label for="username">Username:</label>
-        <input type="text" name="username" value="<?php echo $user['username']; ?>" required>
-
+        <input type="text" name="username" value="<?php echo $user['username']; ?>" required><br>
         <label for="email">Email:</label>
-        <input type="email" name="email" value="<?php echo $user['email']; ?>" required>
-
+        <input type="email" name="email" value="<?php echo $user['email']; ?>" required><br>
+        <label for="password">Password:</label>
+        <input type="password" name="password" value="<?php echo $user['password']; ?>" required><br>
+        <label for="role">Role:</label>
+        <input type="text" name="role" value="<?php echo $user['role']; ?>" required><br>
         <input type="submit" name="update" value="Update User">
     </form>
 
-    <div>
-        <a href="users.php"><button>Go Back to Users</button></a>
-    </div>
-</body>
+    <?php
+    if (isset($_POST['update'])) {
+        echo '<script>alert("User updated successfully!");</script>';
+    }
+    ?>
+    <button onclick="goBack()">Go Back</button>
 
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
 </html>
