@@ -23,6 +23,11 @@
             width: 300px;
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
             position: relative;
+           
+        }
+        .product img {
+           max-height:320px;
+           width: 250px;
         }
 
         img {
@@ -139,11 +144,6 @@
 <body>
     <h2>Product List</h2>
     <a href="insertproduct.php" class="add-btn">Add New Product</a>
-    <div>
-        <button class="category-btn active" onclick="filterProducts('bestseller')">Bestseller</button>
-        <button class="category-btn" onclick="filterProducts('giftbox')">Gift Box</button>
-       
-    </div>
 
     <?php
     include '../connection.php';

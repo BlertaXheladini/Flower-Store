@@ -142,7 +142,7 @@ if ($resultBestSeller->num_rows > 0) {
     echo "<div class='bestseller'>";
     while ($row = $resultBestSeller->fetch_assoc()) {
         echo "<div class='box'>";
-        echo "<img src='pictures/{$row['picture']}' alt='{$row['name']}'>";
+        echo "<img src='productsimg/{$row['picture']}' alt='{$row['name']}'>";
         echo "<h4>{$row['name']}</h4>";
         echo "<h5>\${$row['price']}</h5>";
         echo "<div class='top'>";
@@ -166,7 +166,7 @@ if ($resultGiftBox->num_rows > 0) {
     echo "<div class='gifts'>";
     while ($row = $resultGiftBox->fetch_assoc()) {
         echo "<div class='box'>";
-        echo "<img src='pictures/{$row['picture']}' alt='{$row['name']}'>";
+        echo "<img src='productsimg/{$row['picture']}' alt='{$row['name']}'>";
         echo "<h4>{$row['name']}</h4>";
         echo "<h5>\${$row['price']}</h5>";
         echo "<div class='top'>";

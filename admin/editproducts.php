@@ -118,7 +118,7 @@ if (isset($_POST['update'])) {
         }
 
         input[type="submit"]:hover {
-            background-color:#cdbcac;
+            background-color:	#00661a;
         }
     button {
         background-color: #223222;
@@ -141,16 +141,17 @@ if (isset($_POST['update'])) {
 </head>
 <body>
      <h2>Edit Product</h2>
-    <form action="" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="id" value="<?php echo isset($_POST['id']) ? $_POST['id'] : ''; ?>">
-        <label for="name">Product Name:</label>
-        <input type="text" name="name" value="<?php echo $product['name']; ?>" required><br>
-        <label for="price">Product Price:</label>
-        <input type="text" name="price" value="<?php echo $product['price']; ?>" required><br>
-        <label for="image">Product Image:</label>
-        <input type="file" name="image" accept="image/*">
-        <input type="submit" name="update" value="Update Product">
-    </form>
+     <form action="" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="updateId" value="<?php echo isset($_POST['updateId']) ? $_POST['updateId'] : $product['ID']; ?>">
+    <label for="name">Product Name:</label>
+    <input type="text" name="name" value="<?php echo $product['name']; ?>" required><br>
+    <label for="price">Product Price:</label>
+    <input type="text" name="price" value="<?php echo $product['price']; ?>" required><br>
+    <label for="image">Product Image:</label>
+    <input type="file" name="image" accept="image/*">
+    <input type="submit" name="update" value="Update Product">
+</form>
+
 
     <?php
     // Process the form submission and update the product in the database

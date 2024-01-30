@@ -73,26 +73,34 @@ main img {
 
 .bestseller {
     position: relative;
-    display: grid;
+
     grid-template-columns: repeat(auto-fit, minmax(100px, auto));
     align-items: center;
     gap: 1px;
     margin-top: 20px;
     text-align: center;
-    padding: 20px;
+    padding: 0px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 
 
 .gifts {
     position: relative;
-    display: grid;
+
     grid-template-columns: repeat(auto-fit, minmax(100px, auto));
     align-items: center;
     gap: 25px;
     margin-top: 20px;
     text-align: center;
     padding: 40px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .box {
@@ -286,7 +294,7 @@ a:hover {
     font-size: 35px;
 
 
-    
+
 }
 
 
@@ -305,12 +313,35 @@ a:hover {
 
 @media (max-width: 768px) {
     .product {
-        width: calc(50% - 20px); 
+        width: calc(50% - 20px);
     }
 }
 
-@media (max-width: 576px) {
+@media screen and (max-width: 576px) {
     .product {
-        width: 100%; 
+        width: 100%;
+    }
+
+    .box {
+        width: 100%;
+        margin: 0px;
+        padding: 0px;
+
+    }
+
+    main img {
+        margin-top: 20px
+    }
+
+    body {
+        padding: 0px;
+    }
+
+    main {
+        margin: 35px
+    }
+
+    .bestseller {
+        display: inline;
     }
 }
