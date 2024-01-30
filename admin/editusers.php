@@ -24,11 +24,10 @@ if (isset($_POST['update'])) {
 
     $username = $_POST['username'];
     $email = $_POST['email'];
-    $password = $_POST['password'];
     $role = $_POST['role'];
 
-    $stmt = $conn->prepare("UPDATE users SET username = ?, email = ?, password = ?, role = ? WHERE ID = ?");
-    $stmt->bind_param("ssssi", $username, $email, $password, $role, $id);
+    $stmt = $conn->prepare("UPDATE users SET username = ?, email = ?, role = ? WHERE ID = ?");
+    $stmt->bind_param("ssssi", $username, $email, $role, $id);
     $stmt->execute();
 
     if ($stmt === false) {
@@ -123,8 +122,6 @@ if (isset($_POST['update'])) {
         <input type="text" name="username" value="<?php echo $user['username']; ?>" required><br>
         <label for="email">Email:</label>
         <input type="email" name="email" value="<?php echo $user['email']; ?>" required><br>
-        <label for="password">Password:</label>
-        <input type="password" name="password" value="<?php echo $user['password']; ?>" required><br>
         <label for="role">Role:</label>
         <input type="text" name="role" value="<?php echo $user['role']; ?>" required><br>
         <input type="submit" name="update" value="Update User">

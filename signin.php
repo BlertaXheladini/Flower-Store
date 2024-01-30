@@ -25,13 +25,38 @@ class UserManager {
 
             if ($password === $storedPassword) {
                 $_SESSION["username"] = $row["username"];
-                header("Location: home.php");
+
+                $role = $this->getRoleByUsername($username);
+                $_SESSION["role"] = $role;
+
+                if ($role === "admin") {
+                    header("Location: admin/dashboard.php");
+                } else {
+                    header("Location: home.php");
+                }
                 exit();
             } else {
                 echo "Invalid password.";
             }
         } else {
             echo "User not found.";
+        }
+    }
+
+    private function getRoleByUsername($username) {
+        $username = $this->sanitizeInput($username);
+
+        $sql = "SELECT role FROM users WHERE username = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            return $row["role"];
+        } else {
+            return "user"; 
         }
     }
 
@@ -51,6 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 $conn->close();
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
