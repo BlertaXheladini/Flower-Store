@@ -146,58 +146,88 @@
     <a href="insertproduct.php" class="add-btn">Add New Product</a>
 
     <?php
-    include '../connection.php';
 
-    session_start();
+include '../connection.php';
 
-    // Check if category filter is set
-    $category = isset($_GET['category']) ? $_GET['category'] : 'bestseller';
-    
-    $sql = "SELECT * FROM products ";
-    $result = $conn->query($sql);
+class ProductManager {
+    private $conn;
 
-    if ($result->num_rows > 0) {
-        echo '<div class="bestseller-products">';
-        while ($row = $result->fetch_assoc()) {
-            echo "<div class='product'>";
-            echo "<h3>{$row['name']}</h3>";
-            echo "<p>Price: \${$row['price']}</p>";
-            echo "<img src='../productsimg/{$row['picture']}' alt='{$row['name']}'>";
-
-            // Delete Form
-            echo "<form method='post' action='deleteproduct.php' style='display: inline;'>";
-            echo "<input type='hidden' name='deleteId' value='{$row['ID']}'>";
-            echo "<button type='submit' class='delete-btn'>Delete</button>";
-            echo "</form>";
-
-            // Update Form
-            echo "<form method='post' action='editproducts.php' style='display: inline;'>";
-            echo "<input type='hidden' name='updateId' value='{$row['ID']}'>";
-            echo "<button type='submit' class='update-btn'>Update</button>";
-            echo "</form>";
-
-            echo "</div>";
-        }
-        echo '</div>';
-    } else {
-        echo "<p>No products available for this category.</p>";
+    public function __construct($connection) {
+        $this->conn = $connection;
     }
 
-    $conn->close();
-    ?>
+    public function getProducts($category = 'bestseller') {
+        $sql = "SELECT * FROM products";
+        $result = $this->conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            $products = [];
+            while ($row = $result->fetch_assoc()) {
+                $products[] = $row;
+            }
+            return $products;
+        } else {
+            return [];
+        }
+    }
+
+    public function displayProducts($products) {
+        if (!empty($products)) {
+            echo '<div class="bestseller-products">';
+            foreach ($products as $product) {
+                $this->displayProduct($product);
+            }
+            echo '</div>';
+        } else {
+            echo "<p>No products available for this category.</p>";
+        }
+    }
+
+    private function displayProduct($product) {
+        echo "<div class='product'>";
+        echo "<h3>{$product['name']}</h3>";
+        echo "<p>Price: \${$product['price']}</p>";
+        echo "<img src='../productsimg/{$product['picture']}' alt='{$product['name']}'>";
+
+    
+        echo "<form method='post' action='deleteproduct.php' style='display: inline;'>";
+        echo "<input type='hidden' name='deleteId' value='{$product['ID']}'>";
+        echo "<button type='submit' class='delete-btn'>Delete</button>";
+        echo "</form>";
+
+      
+        echo "<form method='post' action='editproducts.php' style='display: inline;'>";
+        echo "<input type='hidden' name='updateId' value='{$product['ID']}'>";
+        echo "<button type='submit' class='update-btn'>Update</button>";
+        echo "</form>";
+
+        echo "</div>";
+    }
+}
+
+
+
+session_start();
+
+$productManager = new ProductManager($conn);
+$products = $productManager->getProducts();
+
+$productManager->displayProducts($products);
+
+$conn->close();
+
+?>
+
 
     <script>
         function filterProducts(category) {
-            // Get all category buttons and remove the active class
             var categoryButtons = document.querySelectorAll('.category-btn');
             categoryButtons.forEach(function(button) {
                 button.classList.remove('active');
             });
 
-            // Add active class to the clicked category button
             document.querySelector(`.category-btn[data-category="${category}"]`).classList.add('active');
 
-            // Reload the page with the selected category filter
             window.location.href = `products.php?category=${category}`;
         }
     </script>

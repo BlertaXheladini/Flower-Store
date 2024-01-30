@@ -1,28 +1,45 @@
 <?php
+
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 include '../connection.php';
 
+class ProductManager {
+    private $conn;
+
+    public function __construct($connection) {
+        $this->conn = $connection;
+    }
+
+    public function addProduct($name, $price, $image) {
+        $target_dir = "../productsimg/";
+        $target_file = $target_dir . basename($image);
+        move_uploaded_file($_FILES["image"]["tmp_name"], $target_file);
+
+        $sql = "INSERT INTO products (name, price, picture) VALUES ('$name', '$price', '$image')";
+        $this->conn->query($sql);
+    }
+}
+
+// Usage:
+
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
     $name = $_POST["name"];
     $price = $_POST["price"];
-
-    // Handle image upload
     $image = $_FILES['image']['name'];
-    $target_dir = "../productsimg/";
-    $target_file = $target_dir . basename($image);
-    move_uploaded_file($_FILES["image"]["tmp_name"], $target_file);
 
-    $sql = "INSERT INTO products (name, price, picture) VALUES ('$name', '$price', '$image')";
-    $conn->query($sql);
+    $productManager = new ProductManager($conn);
+    $productManager->addProduct($name, $price, $image);
 
     echo '<script>alert("Product added successfully!");</script>';
 } 
 
 $conn->close();
+
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
