@@ -15,14 +15,14 @@ class Messages {
         $email = $this->sanitizeInput($email);
         $message = $this->sanitizeInput($message);
 
-        $sql = "INSERT INTO messages (name, number, email, messages) VALUES (?, ?, ?, ?)";
+        $sql = "INSERT INTO messages (name, number, email, message) VALUES (?, ?, ?, ?)";
         $stmt = $this->conn->prepare($sql);
 
         if (!$stmt) {
             die("Error: " . $this->conn->error);
         }
 
-        $stmt->bind_param("ssss", $name, $number, $email, $message);
+        $stmt->bind_param("siss", $name, $number, $email, $message);
 
         if ($stmt->execute()) {
             echo "Message sent successfully, thank you for your review";

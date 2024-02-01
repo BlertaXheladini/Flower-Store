@@ -2,10 +2,6 @@
 session_start();
 include("connection.php");
 
-if (isset($_SESSION['username'])) {
-    header("Location: home.php"); 
-    exit();
-}
 class UserManager {
     private $conn;
 
@@ -43,9 +39,10 @@ class UserManager {
                 echo "Invalid password.";
             }
         } else {
-            echo "User not found.";
+            echo '<p style="color: red;">User not found.</p>';
         }
     }
+
 
     private function getRoleByUsername($username) {
         $username = $this->sanitizeInput($username);
@@ -90,7 +87,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="container">
         <div class="forma signin">
             <h1>sign in to flariss store</h1>
-            <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+            <form method="post" id="form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                 <div class="inputi">
                     <input type="text" name="username" id="username" placeholder="Username">
                     <div class="error"></div>

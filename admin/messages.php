@@ -72,7 +72,7 @@
         }
 
         public function getMessages() {
-            $sql = "SELECT * FROM contact_messages ORDER BY created_at DESC";
+            $sql = "SELECT * FROM messages";
             $result = $this->conn->query($sql);
 
             if ($result && $result->num_rows > 0) {
@@ -99,7 +99,6 @@
             echo "<p><strong>Name:</strong> {$message['name']}</p>";
             echo "<p><strong>Email:</strong> {$message['email']}</p>";
             echo "<p><strong>Message:</strong> {$message['message']}</p>";
-            echo "<p><strong>Submitted At:</strong> {$message['created_at']}</p>";
             echo '</div>';
             echo '</div>';
         }
