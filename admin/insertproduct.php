@@ -23,7 +23,6 @@ class ProductManager {
     }
 }
 
-// Usage:
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
     $name = $_POST["name"];

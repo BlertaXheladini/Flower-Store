@@ -133,7 +133,6 @@ session_start();
     <?php
 include 'connection.php';
 
-// Fetch Best Seller products
 $sqlBestSeller = "SELECT * FROM products WHERE category = 'bestseller'";
 $resultBestSeller = $conn->query($sqlBestSeller);
 
@@ -149,7 +148,7 @@ if ($resultBestSeller->num_rows > 0) {
         echo "<p>Limited</p>";
         echo "</div>";
         echo "<div class='bbtn'>";
-        echo "<a href='#'>Add to cart</a>";
+        echo "<a href='addCart.php'>Add to cart</a>";
         echo "</div>";
         echo "</div>";
     }
@@ -173,7 +172,7 @@ if ($resultGiftBox->num_rows > 0) {
         echo "<p>Limited</p>";
         echo "</div>";
         echo "<div class='bbtn'>";
-        echo "<a href='#'>Add to cart</a>";
+        echo "<a href='addCart.php'>Add to cart</a>";
         echo "</div>";
         echo "</div>";
     }

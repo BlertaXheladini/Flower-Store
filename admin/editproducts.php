@@ -1,11 +1,15 @@
 <?php
 include '../connection.php';
+include 'query.php';
 
-// Check if "updateId" is set in $_POST
+
 if (isset($_POST["updateId"])) {
     $id = $_POST["updateId"];
 
-    // Use prepared statements to avoid SQL injection
+    $productNameQuery = "SELECT name FROM products WHERE id = $id";
+    $productNameResult = $conn->query($productNameQuery);
+    $productName = ($productNameResult->num_rows > 0) ? $productNameResult->fetch_assoc()['name'] : 'Unknown Product';
+
     $stmt = $conn->prepare("SELECT * FROM products WHERE ID = ?");
     $stmt->bind_param("i", $id);
     $stmt->execute();
@@ -15,38 +19,35 @@ if (isset($_POST["updateId"])) {
         die("Error: " . $conn->error);
     }
 
-    // Fetch the product data
     $product = $result->fetch_assoc();
 
-    // Close the statement
     $stmt->close();
 } else {
-    // Handle the case where "updateId" is not set in $_POST
+   
     die("Error: Product ID not provided.");
 }
 
-// Check if the form is submitted for updating
 if (isset($_POST['update'])) {
-    // Process the form data and update the database
+
 
     $name = $_POST['name'];
     $price = $_POST['price'];
 
-    // Check if a new image is provided
+  
     if (!empty($_FILES['image']['name'])) {
         $image = $_FILES['image']['name'];
         $image_temp = $_FILES['image']['tmp_name'];
 
-        // Move the uploaded file to the destination directory
+      
         move_uploaded_file($image_temp, "../productsimg/$image");
     } else {
-        // If no new image provided, keep the existing image
+      
         $result = $conn->query("SELECT picture FROM products WHERE ID = $id");
         $row = $result->fetch_assoc();
         $image = $row['picture'];
     }
 
-    // Update the product in the database
+  
     $stmt = $conn->prepare("UPDATE products SET name = ?, price = ?, picture = ? WHERE ID = ?");
     $stmt->bind_param("sssi", $name, $price, $image, $id);
     $stmt->execute();
@@ -55,10 +56,12 @@ if (isset($_POST['update'])) {
         die("Error: " . $conn->error);
     }
 
-    // Close the statement
+
+    logAdminAction('updated', $productName);
+
     $stmt->close();
 
-    // Display an alert after the form is submitted
+  
     echo '<script>alert("Product updated successfully!");</script>';
 }
 ?>
@@ -154,12 +157,10 @@ if (isset($_POST['update'])) {
 
 
     <?php
-    // Process the form submission and update the product in the database
+ 
     if (isset($_POST['update'])) {
-        // Handle form submission and database update here
-        // ...
+     
 
-        // Display success alert
         echo '<script>alert("Product updated successfully!");</script>';
     }
     ?>

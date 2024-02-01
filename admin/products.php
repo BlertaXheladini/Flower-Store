@@ -190,9 +190,9 @@ class ProductManager {
         echo "<img src='../productsimg/{$product['picture']}' alt='{$product['name']}'>";
 
     
-        echo "<form method='post' action='deleteproduct.php' style='display: inline;'>";
+        echo "<form method='post' action='deleteproduct.php?id={$product['ID']}' style='display: inline;'>";
         echo "<input type='hidden' name='deleteId' value='{$product['ID']}'>";
-        echo "<button type='submit' class='delete-btn'>Delete</button>";
+        echo "<button type='submit' name='submit1' class='delete-btn'>Delete</button>";
         echo "</form>";
 
       
