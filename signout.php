@@ -1,12 +1,18 @@
 <?php
 
-session_start();
+class SessionManager {
+    public function __construct() {
+        session_start();
+    }
 
-session_destroy();
+    public function destroySessionAndRedirect($redirectLocation) {
+        session_destroy();
+        header("Location: $redirectLocation");
+        exit();
+    }
+}
 
-header("Location: signin.php");
-exit();
-
-
+$sessionManager = new SessionManager();
+$sessionManager->destroySessionAndRedirect('home.php');
 
 ?>

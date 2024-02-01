@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,8 +10,15 @@
     <link rel="stylesheet" type="text/css" href="home.css" />
     <script src="js/flower.js"></script>
     <title>Flower Web Store</title>
+    <style>
+        .signin-button {
+            display: <?php echo isset($_SESSION['username']) ? 'none' : 'inline-block'; ?>;
+        }
+        .signout-button {
+            display: <?php echo isset($_SESSION['username']) ? 'inline-block' : 'none'; ?>;
+        }
+    </style>
 </head>
-
 <body>
     <header>
         <div class="container">
@@ -25,8 +30,14 @@
                     <li><a href="contact.php">Contacts</a></li>
                 </ul>
                 <nav>
-                    <input type="submit" value="Sign In" onclick="window.location.href = 'signin.php'" />
-                    <input type="submit" value="Sign Out" onclick="window.location.href = 'signout.php'" />
+                <?php
+                    session_start();
+                    if (isset($_SESSION['username'])) { 
+                        echo '<input type="submit" value="Sign Out" onclick="window.location.href = \'signout.php\'" />';
+                    } else {
+                        echo '<input type="submit" value="Sign In" onclick="window.location.href = \'signin.php\'" />';
+                    }
+                    ?>
                 </nav>
             </div>
             <div class="row">

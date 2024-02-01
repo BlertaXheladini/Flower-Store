@@ -133,7 +133,6 @@ session_start();
     <?php
 include 'connection.php';
 
-// Fetch Best Seller products
 $sqlBestSeller = "SELECT * FROM products WHERE category = 'bestseller'";
 $resultBestSeller = $conn->query($sqlBestSeller);
 
