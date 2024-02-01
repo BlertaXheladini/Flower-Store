@@ -4,11 +4,9 @@ include("connection.php");
 
 class UserManager {
     private $conn;
-
     public function __construct($connection) {
         $this->conn = $connection;
     }
-
     public function loginUser($username, $password) {
         $username = $this->sanitizeInput($username);
         $password = $this->sanitizeInput($password);

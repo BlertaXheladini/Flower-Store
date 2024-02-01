@@ -1,15 +1,37 @@
 <?php
 include '../connection.php';
+include 'query.php';
 
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["deleteId"])) {
+if (isset($_POST["submit1"]) && isset($_POST["deleteId"])) {
     $deleteId = $_POST["deleteId"];
 
-    $deleteSql = "DELETE FROM products WHERE id = $deleteId";
-    $conn->query($deleteSql);
+    $productNameQuery = "SELECT name FROM products WHERE id = $deleteId";
+    $productNameResult = $conn->query($productNameQuery);
+    $productName = ($productNameResult->num_rows > 0) ? $productNameResult->fetch_assoc()['name'] : 'Unknown Product';
 
-    header("Location: products.php  ");
-    exit();
+    try {
+        // Start a transaction
+        $conn->begin_transaction();
+
+        // Delete the product
+        $deleteSql = "DELETE FROM products WHERE id = $deleteId";
+        $conn->query($deleteSql);
+//!this one
+        // Log the admin action after successful deletion
+        logAdminAction('delete', $productName);
+
+        // Commit the transaction
+        $conn->commit();
+
+        header("Location: products.php");
+        exit();
+    } catch (Exception $e) {
+        // Rollback the transaction in case of an error
+        $conn->rollback();
+
+        echo "Error: " . $e->getMessage();
+    }
+
+    $conn->close();
 }
-
-$conn->close();
 ?>
