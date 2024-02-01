@@ -1,4 +1,5 @@
 <?php
+session_start();
 include("connection.php");
 
 class Messages {
@@ -38,6 +39,11 @@ class Messages {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["save"])) {
+    if (!isset($_SESSION['username'])) {
+        echo "You need to be signed in to send a message.";
+        exit();
+    }
+
     $message = new Messages($conn);
 
     $name = $_POST["name"];
@@ -50,7 +56,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["save"])) {
 
 $conn->close();
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 

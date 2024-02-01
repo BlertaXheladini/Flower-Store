@@ -1,7 +1,11 @@
 <?php
-include("connection.php");
 session_start();
+include("connection.php");
 
+if (isset($_SESSION['username'])) {
+    header("Location: home.php"); 
+    exit();
+}
 class UserManager {
     private $conn;
     public function __construct($connection) {
@@ -62,19 +66,14 @@ class UserManager {
         return mysqli_real_escape_string($this->conn, htmlspecialchars(trim($data)));
     }
 }
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $userManager = new UserManager($conn);
-
     $username = $_POST["username"];
     $password = $_POST["password"];
-
     $userManager->loginUser($username, $password);
+    $conn->close();
 }
-
-$conn->close();
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">

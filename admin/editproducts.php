@@ -30,6 +30,7 @@ if (isset($_POST["updateId"])) {
 if (isset($_POST['update'])) {
 
 
+
     $name = $_POST['name'];
     $price = $_POST['price'];
 

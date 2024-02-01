@@ -120,7 +120,7 @@
     
 @media (max-width: 768px) {
     .product {
-        width: 100%; /* Full width on smaller screens */
+        width: 100%;
     }
 
     .delete-btn,
