@@ -2,28 +2,28 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css" type="text/css">
     <script src="flower.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="home.css" />
-    <script src="js/flower.js"></script>
     <title>Flower Web Store</title>
-    <style>
-        .signin-button {
-            display: <?php echo isset($_SESSION['username']) ? 'none' : 'inline-block'; ?>;
+    <script>
+        function toggleMenu() {
+            var navbarLinks = document.getElementById("navbarLinks");
+            navbarLinks.classList.toggle("show");
         }
-        .signout-button {
-            display: <?php echo isset($_SESSION['username']) ? 'inline-block' : 'none'; ?>;
-        }
-    </style>
+    </script>
 </head>
+
 <body>
     <header>
         <div class="container">
             <div class="navbar">
-                <ul>
+                <div class="icon" onclick="toggleMenu()">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul id="navbarLinks">
                     <li><a href="home.php">Home</a></li>
                     <li><a href="about.php">About Us</a></li>
                     <li><a href="products.php">Products</a></li>
@@ -48,45 +48,6 @@
                 </div>
             </div>
         </div>
-
     </header>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </body>
-
 </html>

@@ -369,4 +369,35 @@ a:hover {
     .bestseller {
         display: inline;
     }
+    .leftfooter p{
+        display:none;
+    }
+    .mainfooter p{
+        display:none;
+    }
+    .mainfooter2 .phonefooter{
+        display:none;
+    }
+    .mainfooter2 .emailfooter{
+        display:none;
+    }
+    .mainfooter2 p{
+        display:none;
+    }
+    footer {
+        display:flex;
+        flex-direction:column;
+    }
+    
+        .rightfooter {
+            align-self: flex-end; 
+            margin-top:-90px;
+        }
+    
+    .leftfooter a,
+    .mainfooter a,
+    .mainfooter2 a {
+        display: block;
+        margin-bottom: 10px; 
+    }
 }

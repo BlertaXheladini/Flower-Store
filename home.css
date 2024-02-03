@@ -126,3 +126,47 @@ button:hover {
     color: #000;
     cursor: pointer;
 }
+
+.icon{
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+
+.container .navbar ul {
+    display: flex; /
+}
+.icon {
+    display: none;
+    color: white;
+    font-size: 25px;
+    margin-top: 15%;
+}
+    .container .navbar ul {
+        display: none; 
+    }
+    .icon {
+        display: block; 
+    }
+    .container .navbar ul.show {
+        display: flex; 
+    }
+    .row .title {
+        flex-basis: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center; 
+    }
+    .row .title h1 {
+        font-size: 75px;
+    }
+    .row .title p {
+        font-size: 20px;
+    }
+    .container nav input[type="submit"] {
+        width: 120px; 
+        height: 40px;
+        font-size: 14px; 
+    }
+}
