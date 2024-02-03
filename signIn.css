@@ -1,10 +1,11 @@
-*{
-    margin:0;
+* {
+    margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family:sans-serif;
+    font-family: sans-serif;
 }
-body{
+
+body {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,37 +16,38 @@ body{
     backdrop-filter: blur(5px);
 }
 
-.container{
+.container {
     position: relative;
-    width: 400px;
+    width: 90%;
+    max-width: 400px;
     height: fit-content;
     border-radius: 20px;
     background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), transparent;
-    color:black;
+    color: black;
     padding: 30px 40px;
-    text-align: center;    
+    text-align: center;
 }
 
-.container .forma h1{
-    font-size: 30px;
+.container .forma h1 {
+    font-size: 24px;
     text-align: center;
     font-weight: lighter;
     font-family: serif;
 }
 
-.container .forma .inputi{
+.container .forma .inputi {
     width: 100%;
     height: 50px;
     background: transparent;
-    margin: 30px 0;
+    margin: 20px 0;
 }
 
-.container .inputi input{
+.container .inputi input {
     width: 100%;
     margin: auto;
     height: 100%;
-    background:white;
-    border: 2px solid rgba(255,255,255,.2);
+    background: white;
+    border: 2px solid rgba(255, 255, 255, .2);
     border-radius: 20px;
     font-size: 16px;
     color: black;
@@ -53,38 +55,14 @@ body{
     font-family: serif;
 }
 
-.inputi input:hover{
-    box-shadow: 0 0 10px black;
-}
-
-.inputi input::placeholder{
-    color: black;
-}
-
-.container .forma .forgot-remember{
+.container .forma .forgot-remember {
     display: flex;
     justify-content: space-between;
-    font-size: 14.5px;
-    margin: -15px 0 15px;
-    margin-top: 5px;
-}
-.container .forma .terms{
-    display: flex;
-    justify-content:center ;
-    font-size: 14.5px;
-    margin: -15px 0 15px;
-    margin-top: 5%;
-}
-.forgot-remember label input {
-    accent-color: #fff;
-    margin-right: 3px;
+    font-size: 14px;
+    margin: -10px 0 10px;
 }
 
-.forgot-remember a:hover{
-    text-decoration: underline;
-}
-
-.container .forma .btn{
+.container .forma .btn {
     display: inline-block;
     padding: 12px 24px;
     background-color: rgb(2, 92, 2);
@@ -97,39 +75,53 @@ body{
     margin-top: 3%;
 }
 
-.forma .btn:hover{
-    box-shadow: 0 0 10px black;
-}
-
-.container .forma .register{
-
-    font-size:14.5px;
+.container .forma .register {
+    font-size: 14px;
     text-align: center;
     margin-top: 10px;
 }
-.register p a{
-    color:black;
-    font-weight: 600;
-    text-decoration: none;
+
+@media only screen and (max-width: 768px) {      
+  .container{
+      width:700px;
+      height:fit-content;
+      
+  }
+  .container .forma h1{
+      font-size: 60px;
+      padding-top:5%;
+  }
+  .container .forma .inputi{
+      width: 100%;
+      height: 100px;
+      margin: 70px 0;
+  }
+  .container .inputi input {
+      font-size: 35px;
+      width: 100%; 
+      padding-left: 5%;
+  }
+  .container .forma .forgot-remember{
+      display: flex;
+      justify-content: space-between;
+      font-size: 30px;
+      margin: -15px 0 15px;
+      margin-top: 5px;
+  }
+  
+  .container .forma .btn{
+      width: fit-content;
+      height: 90px;
+      font-size:27px
+  }
+  .container .forma .register {
+      font-size: 27px;
+  }
+.container .forma .terms{
+    font-size:25px;
 }
-.register p a:hover{
-    text-decoration: underline;
+input[type="checkbox"] {
+    transform: scale(2);  
 }
 
-.inputi input:focus {
-    outline: 0;
-}
-
-.inputi.success input {
-    border-color: green;
-}
-
-.inputi.error input {
-    border-color: red;
-}
-
-.inputi.error {
-    color: red;
-    font-size: 15px;
-    font-family: serif; 
 }

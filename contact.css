@@ -187,3 +187,44 @@ button:hover {
     font-family: serif;
     padding-left: 5%;
 }
+@media screen and (max-width: 768px) {
+  .container .contactInfo{
+      display:none;
+  }
+  .contactForm {
+      width: 100%;
+      height: fit-content;
+  }
+  .contactForm h2 {
+      font-size:65px;
+      padding-bottom:25px;
+  }
+  
+  .contactForm .input {
+        width: 100%;
+        height: fit-content;
+  }
+  
+  .contactForm .input input,
+  textarea {
+        font-size: 38px;
+        width: 100%; 
+        padding-left: 5%;
+  }
+  
+  button {
+      width: fit-content;
+      height: 90px;
+      font-size:35px;
+  }
+  .contact .content h2 {
+      font-size: 90px;
+      padding-bottom:10px;
+  }
+  
+  .contact .content p {
+      font-size: 30px;
+      padding-bottom:20px;
+  }
+  
+}
