@@ -50,6 +50,7 @@ $conn->close();
 
 <head>
     <link rel="stylesheet" type="text/css" href="signIn.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script defer src="signup.js"></script>
     <title>SignIn</title>
 </head>

@@ -8,7 +8,7 @@
 .contact {
     position: relative;
     min-height: 100vh;
-    padding: 50px 100px;
+    padding: 50px 20px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -20,10 +20,11 @@
 .contact .content {
     max-width: 800px;
     text-align: center;
+    padding: 0 10px;
 }
 
 .contact .content h2 {
-    font-size: 60px;
+    font-size: 4vw;
     font-weight: 500;
     color: white;
 }
@@ -31,7 +32,7 @@
 .contact .content p {
     font-weight: 300;
     color: white;
-    font-size: 20px;
+    font-size: 1.5vw;
 }
 
 .container {
@@ -40,91 +41,78 @@
     justify-content: center;
     align-items: center;
     margin-top: 30px;
+    flex-wrap: wrap;
 }
 
 .container .contactInfo {
-    width: 50vh;
+    width: 50%;
+    max-width: 400px;
     padding: 40px;
-    background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), transparent;
-    margin-left: 20px;
-    border: none;
+    background: rgba(255, 255, 255, 0.7);
+    margin: 20px;
     border-radius: 20px;
-    height: 100%;
+    text-align: left;
 }
 
 .container .contactInfo h2 {
-    font-size: 30px;
+    font-size: 2.5vw;
     color: rgb(6, 81, 6);
     font-weight: 500;
     text-align: left;
 }
 
 .container .contactInfo .box {
-    position: relative;
     padding: 20px 0;
     display: flex;
 }
 
 .container .contactInfo .box .icon {
     min-width: 60px;
-    background: none;
     color: green;
     display: flex;
     justify-content: left;
     align-items: center;
-    font-size: 22px;
+    font-size: 1.5em;
 }
 
 .container .contactInfo .box .text {
     display: flex;
     font-weight: 500;
-    font-size: 16px;
+    font-size: 1em;
     color: black;
     flex-direction: column;
-
 }
 
 .container .contactInfo .box .text h3 {
     font-weight: 550;
     color: green;
-    margin-bottom: 10%;
+    margin-bottom: 10px;
 }
 
 .contactForm {
-    width: 40%;
+    width: 50%;
+    max-width: 600px;
     padding: 40px;
-    height: fit-content;
-    background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), transparent;
-    margin-left: 20px;
-    border: none;
+    background: rgba(255, 255, 255, 0.7);
+    margin: 20px;
     border-radius: 20px;
 }
 
 .contactForm h2 {
-    font-size: 30px;
+    font-size: 2.5vw;
     color: rgb(6, 81, 6);
     font-weight: 500;
     text-align: left;
 }
 
-.contactForm .input {
-    display: flex;
-    flex-direction: column;
-}
-
 .contactForm .input input,
-textarea {
+.contactForm .input textarea {
     width: 100%;
     padding: 12px;
     border-radius: 8px;
     border: 2px solid #f0f0f0;
-    font-size: 16px;
+    font-size: 1em;
     margin: 10px 0;
-}
-
-.contactForm .input input:hover,
-.contactForm .input textarea:hover {
-    border-color: rgba(139, 0, 0, 0.7);
 }
 
 button {
@@ -154,77 +142,51 @@ button:hover {
     border-color: green;
 }
 
-.contactForm .input.success textarea {
-    border-color: green;
-}
-
 .input.error input,
 .input.error textarea {
     border-color: red;
 }
 
-.input .input-textarea .error {
+.input .error {
     color: red;
-    font-size: 14px;
+    font-size: 0.8em;
     font-family: serif;
     padding-left: 5%;
 }
 
-.input.error .input-textarea {
-    padding-left: 5%;
-}
-
-.error {
-    color: red;
-    font-size: 14px;
-    font-family: serif;
-
-}
-
-.input.error .error {
-    color: red;
-    font-size: 14px;
-    font-family: serif;
-    padding-left: 5%;
-}
 @media screen and (max-width: 768px) {
-  .container .contactInfo{
-      display:none;
+  .container .contactInfo {
+      display: none;
   }
+
   .contactForm {
+    margin-top: -8%;
       width: 100%;
-      height: fit-content;
-  }
-  .contactForm h2 {
-      font-size:65px;
-      padding-bottom:25px;
+      padding: 7%;
   }
   
-  .contactForm .input {
-        width: 100%;
-        height: fit-content;
+  .contactForm h2 {
+      font-size: 6vw;
+      padding-bottom: 15px;
   }
   
   .contactForm .input input,
-  textarea {
-        font-size: 38px;
-        width: 100%; 
-        padding-left: 5%;
+  .contactForm .input textarea {
+      font-size: 3vw;
   }
   
   button {
-      width: fit-content;
-      height: 90px;
-      font-size:35px;
+      height: 5vh;
+      font-size: 3vw;
   }
+  
   .contact .content h2 {
-      font-size: 90px;
-      padding-bottom:10px;
+      font-size: 10vw;
+      padding-bottom: 10px;
   }
   
   .contact .content p {
-      font-size: 30px;
-      padding-bottom:20px;
+      font-size: 5vw;
+      padding-bottom: 15px;
   }
-  
 }
