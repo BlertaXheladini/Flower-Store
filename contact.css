@@ -174,100 +174,16 @@ button:hover {
     padding-left: 5%;
 }
 
+.error {
+    color: red;
+    font-size: 14px;
+    font-family: serif;
 
-@media only screen and (max-width: 768px) {
-    .contact .content h2 {
-        font-size: 32px;
-    }
-
-    .contact .content p {
-        font-size: 14px;
-    }
-
-    .container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .container .contactInfo,
-    .contactForm {
-        width: 100%;
-        max-width: none;
-        margin: 10px 0;
-    }
 }
 
-@media only screen and (max-width: 600px) {
-    .contact .content h2 {
-        font-size: 28px;
-    }
-
-    .contact .content p {
-        font-size: 12px;
-    }
-
-    .container .contactInfo h2,
-    .contactForm h2 {
-        font-size: 20px;
-    }
-
-    .container .contactInfo .box .icon {
-        font-size: 18px;
-    }
-
-    .container .contactInfo .box .text,
-    .contactForm .input input,
-    .contactForm .input textarea {
-        font-size: 14px;
-    }
-
-    button {
-        padding: 10px 20px;
-        font-size: 14px;
-    }
+.input.error .error {
+    color: red;
+    font-size: 14px;
+    font-family: serif;
+    padding-left: 5%;
 }
-
-@media only screen and (max-width: 480px) {
-    .contact .content h2 {
-        font-size: 24px;
-    }
-
-    .contact .content p {
-        font-size: 12px;
-    }
-
-    .container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .container .contactInfo,
-    .contactForm {
-        width: 100%;
-        max-width: none;
-        margin: 10px 0;
-    }
-
-    
-
-    .container .contactInfo h2,
-    .contactForm h2 {
-        font-size: 18px;
-    }
-
-    .container .contactInfo .box .icon {
-        font-size: 16px;
-    }
-
-    .container .contactInfo .box .text,
-    .contactForm .input input,
-    .contactForm .input textarea {
-        font-size: 12px;
-    }
-
-    button {
-        padding: 8px 16px;
-        font-size: 12px;
-    }
-}
-

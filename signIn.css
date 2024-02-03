@@ -116,20 +116,20 @@ body{
     text-decoration: underline;
 }
 
-.inputi input:focus{
+.inputi input:focus {
     outline: 0;
 }
 
-.inputi.success input
-{
+.inputi.success input {
     border-color: green;
 }
 
-.inputi.error input{
+.inputi.error input {
     border-color: red;
 }
 
-.inputi.error{
+.inputi.error {
     color: red;
     font-size: 15px;
+    font-family: serif; 
 }

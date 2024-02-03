@@ -79,7 +79,7 @@ $conn->close();
                 <div class="terms">
                     <label>
                         <input type="checkbox" id="terms" name="terms" required>
-                        <a href="#"> I agree to the terms & conditions</a>
+                        <a href="termsconditions.php"> I agree to the terms & conditions</a>
                     </label>
                     <div class="error"></div>
                 </div>

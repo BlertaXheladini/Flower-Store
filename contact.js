@@ -1,12 +1,17 @@
 const form = document.getElementById('form');
-const name = document.getElementById('name');
-const number = document.getElementById('number');
-const email = document.getElementById('email');
-const message = document.getElementById('message');
+const inputName = document.getElementById('name');
+const inputNumber = document.getElementById('number');
+const inputEmail = document.getElementById('email');
+const inputMessage = document.getElementById('message');
 
-form.addEventListener('submit', e => {
-    e.preventDefault();
-    validateInputs();
+form.addEventListener('submit', (e) => {
+    let hasErrors = validateInputs();
+
+    if (hasErrors) {
+        e.preventDefault(); 
+    } else {
+        console.log('Form submitted successfully!');
+    }
 });
 
 const setError = (element, message) => {
@@ -38,38 +43,48 @@ const isValidNumber = value => {
 };
 
 const validateInputs = () => {
-    const nameValue = name.value.trim();
-    const numberValue = number.value.trim();
-    const emailValue = email.value.trim();
-    const messageValue = message.value.trim();
+    let hasErrors = false;
+    const nameValue = inputName.value.trim();
+    const numberValue = inputNumber.value.trim();
+    const emailValue = inputEmail.value.trim();
+    const messageValue = inputMessage.value.trim();
 
     if (nameValue === '') {
-        setError(name, 'Name is required!');
+        setError(inputName, 'Name is required!');
+        hasErrors = true;
     } else {
-        setSuccess(name);
+        setSuccess(inputName);
     }
 
     if (emailValue === '') {
-        setError(email, 'Email is required!');
+        setError(inputEmail, 'Email is required!');
+        hasErrors = true;
     } else if (!isValidEmail(emailValue)) {
-        setError(email, 'Provide a valid email address!');
-    } else
-        setSuccess(email);
-    }
-
-    if(numberValue === ''){
-        setError(number, 'Number is required!');
-    }else if(!isValidNumber(numberValue)){
-        setError(number,'This field should only contain numbers');
-    }else{
-        setSuccess(number);
-    }
-
-    if (messageValue === '') {
-        setError(message, 'Please leave your message!');
-    } else if (messageValue.length < 20) {
-        setError(message, 'Your message must be at least 20 characters!');
+        setError(inputEmail, 'Provide a valid email address!');
+        hasErrors = true;
     } else {
-        setSuccess(message);
+        setSuccess(inputEmail);
     }
 
+    if (!numberValue) {
+        setError(inputNumber, 'Number is required!');
+        hasErrors = true;
+    } else if (!isValidNumber(numberValue)) {
+        setError(inputNumber, 'This field should only contain numbers');
+        hasErrors = true;
+    } else {
+        setSuccess(inputNumber);
+    }
+
+    if (!messageValue) {
+        setError(inputMessage, 'Please leave your message!');
+        hasErrors = true;
+    } else if (messageValue.length < 20) {
+        setError(inputMessage, 'Your message must be at least 20 characters!');
+        hasErrors = true;
+    } else {
+        setSuccess(inputMessage);
+    }
+
+    return hasErrors;
+};

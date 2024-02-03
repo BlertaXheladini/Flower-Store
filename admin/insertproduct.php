@@ -24,6 +24,11 @@ class ProductManager {
         $stmt->execute();
     }
 }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 05d606f57c90007040ce7c0d381e70dba0c34f61
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
     $name = $_POST["name"];
     $price = $_POST["price"];

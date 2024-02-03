@@ -1,4 +1,5 @@
 <?php
+session_start();
 include("connection.php");
 
 class Messages {
@@ -14,14 +15,14 @@ class Messages {
         $email = $this->sanitizeInput($email);
         $message = $this->sanitizeInput($message);
 
-        $sql = "INSERT INTO messages (name, number, email, messages) VALUES (?, ?, ?, ?)";
+        $sql = "INSERT INTO messages (name, number, email, message) VALUES (?, ?, ?, ?)";
         $stmt = $this->conn->prepare($sql);
 
         if (!$stmt) {
             die("Error: " . $this->conn->error);
         }
 
-        $stmt->bind_param("ssss", $name, $number, $email, $message);
+        $stmt->bind_param("siss", $name, $number, $email, $message);
 
         if ($stmt->execute()) {
             echo "Message sent successfully, thank you for your review";
@@ -38,6 +39,11 @@ class Messages {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["save"])) {
+    if (!isset($_SESSION['username'])) {
+        echo "You need to be signed in to send a message.";
+        exit();
+    }
+
     $message = new Messages($conn);
 
     $name = $_POST["name"];
@@ -50,7 +56,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["save"])) {
 
 $conn->close();
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 

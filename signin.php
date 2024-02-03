@@ -1,6 +1,6 @@
 <?php
-include("connection.php");
 session_start();
+include("connection.php");
 
 class UserManager {
     private $conn;
@@ -37,9 +37,10 @@ class UserManager {
                 echo "Invalid password.";
             }
         } else {
-            echo "User not found.";
+            echo '<p style="color: red;">User not found.</p>';
         }
     }
+
 
     private function getRoleByUsername($username) {
         $username = $this->sanitizeInput($username);
@@ -62,19 +63,14 @@ class UserManager {
         return mysqli_real_escape_string($this->conn, htmlspecialchars(trim($data)));
     }
 }
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $userManager = new UserManager($conn);
-
     $username = $_POST["username"];
     $password = $_POST["password"];
-
     $userManager->loginUser($username, $password);
+    $conn->close();
 }
-
-$conn->close();
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -89,7 +85,7 @@ $conn->close();
     <div class="container">
         <div class="forma signin">
             <h1>sign in to flariss store</h1>
-            <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+            <form method="post" id="form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                 <div class="inputi">
                     <input type="text" name="username" id="username" placeholder="Username">
                     <div class="error"></div>
