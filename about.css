@@ -164,3 +164,75 @@ a:hover {
 .faicons i:hover {
     transform: translateY(-4px);
 }
+
+@media screen and (max-width: 768px) {
+
+    .top-about {
+        flex-direction: column;
+    }
+
+    .top-about img {
+        order: -1; 
+        margin-bottom: 20px; 
+    }
+
+    .top-text {
+        margin-left: 0; 
+        width: 100%;
+        text-align: center;
+        margin-bottom:20px
+    }
+
+    .top-text h2 {
+        margin-top: 20px; 
+    }
+    .bottom-about {
+        flex-direction: column-reverse;
+    }
+
+    .bottom-about img {
+        width: 100%;
+        margin-bottom: 20px;
+        margin-left:0;
+        margin-top:20px;
+    }
+
+    .bottom-text {
+        width: 100%;
+        text-align: center;
+        margin-top: 20px;
+        margin-left:0;
+        margin-bottom:20px;
+    }
+.leftfooter p{
+    display:none;
+}
+.mainfooter p{
+    display:none;
+}
+.mainfooter2 .phonefooter{
+    display:none;
+}
+.mainfooter2 .emailfooter{
+    display:none;
+}
+.mainfooter2 p{
+    display:none;
+}
+footer {
+    display:flex;
+    flex-direction:column;
+}
+
+    .rightfooter {
+        align-self: flex-end; 
+        margin-top:-90px;
+    }
+
+.leftfooter a,
+.mainfooter a,
+.mainfooter2 a {
+    display: block;
+    margin-bottom: 10px; 
+}
+}
