@@ -1,8 +1,13 @@
 <?php
 include '../connection.php';
+include 'query.php';
 
 if (isset($_GET["id"])) {
     $id = $_GET["id"];
+
+    $userNameQuery = "SELECT username FROM users WHERE id = $id";
+    $userNameResult = $conn->query($userNameQuery);
+    $userName = ($userNameResult->num_rows > 0) ? $userNameResult->fetch_assoc()['username'] : 'Unknown User';
 
     $stmt = $conn->prepare("DELETE FROM users WHERE id = ?");
     $stmt->bind_param("i", $id);
@@ -11,6 +16,8 @@ if (isset($_GET["id"])) {
     if ($stmt === false) {
         die("Error: " . $conn->error);
     }
+
+    logAdminAction('delete', $userName );
 
     $stmt->close();
 
