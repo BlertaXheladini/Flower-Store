@@ -1,8 +1,14 @@
 <?php
 include '../connection.php';
+include 'query.php';
 
 if (isset($_GET["id"])) {
     $id = $_GET["id"];
+
+
+    $userNameQuery = "SELECT username FROM users WHERE id = $id";
+    $userNameResult = $conn->query($userNameQuery);
+    $userName = ($userNameResult->num_rows > 0) ? $userNameResult->fetch_assoc()['username'] : 'Unknown User';
 
     $stmt = $conn->prepare("SELECT * FROM users WHERE ID = ?");
     $stmt->bind_param("i", $id);
@@ -14,6 +20,8 @@ if (isset($_GET["id"])) {
     }
 
     $user = $result->fetch_assoc();
+     
+    logAdminAction('edit', $userName);
 
     $stmt->close();
 } else {
@@ -27,7 +35,7 @@ if (isset($_POST['update'])) {
     $role = $_POST['role'];
 
     $stmt = $conn->prepare("UPDATE users SET username = ?, email = ?, role = ? WHERE ID = ?");
-    $stmt->bind_param("ssssi", $username, $email, $role, $id);
+    $stmt->bind_param("sssi", $username, $email, $role, $id);
     $stmt->execute();
 
     if ($stmt === false) {

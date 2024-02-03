@@ -1,14 +1,14 @@
 <?php
-
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 include '../connection.php';
+include 'query.php';
 
 class ProductManager {
     private $conn;
-
+    
     public function __construct($connection) {
         $this->conn = $connection;
     }
@@ -18,26 +18,44 @@ class ProductManager {
         $target_file = $target_dir . basename($image);
         move_uploaded_file($_FILES["image"]["tmp_name"], $target_file);
 
-        $sql = "INSERT INTO products (name, price, picture) VALUES ('$name', '$price', '$image')";
-        $this->conn->query($sql);
+        // Use parameterized query to prevent SQL injection
+        $stmt = $this->conn->prepare("INSERT INTO products (name, price, picture) VALUES (?, ?, ?)");
+        $stmt->bind_param("sss", $name, $price, $image);
+        $stmt->execute();
     }
 }
+<<<<<<< HEAD
+=======
 
 
+>>>>>>> 05d606f57c90007040ce7c0d381e70dba0c34f61
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
     $name = $_POST["name"];
     $price = $_POST["price"];
     $image = $_FILES['image']['name'];
 
+    $productId = isset($_GET["addID"]) ? $_GET["addID"] : 0;
+
+
+    $productNameQuery = "SELECT name FROM products WHERE id = $productId";
+    $productNameResult = $conn->query($productNameQuery);
+    $productName = ($productNameResult->num_rows > 0) ? $productNameResult->fetch_assoc()['name'] : 'Unknown Product';
+
+
     $productManager = new ProductManager($conn);
+    
     $productManager->addProduct($name, $price, $image);
 
     echo '<script>alert("Product added successfully!");</script>';
-} 
+
+  
+    logAdminAction('add', $productName);
+}
 
 $conn->close();
-
 ?>
+
+
 
 
 <!DOCTYPE html>

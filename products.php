@@ -13,6 +13,7 @@ session_start();
     <script src="flower.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
     <title>Products</title>
 </head>
@@ -130,8 +131,39 @@ session_start();
     </script>
 
     <main>
+
+    <div id="cartContainer">
+  <a href="addCart.php" id="cartLink" target="_blank">
+    <i class="fa-solid fa-cart-shopping" style="color: #987d67;"></i>
+    <span id="cartItemCount">0</span>
+  </a>
+</div>
+
+
+
+
+<script>
+  $(document).ready(function() {
+    var itemCount = 0;
+
+    $('.addToCartLink').on('click', function(e) {
+      e.preventDefault();
+      itemCount++;
+      $('#cartItemCount').text(itemCount);
+    });
+  });
+</script>
+
+
     <?php
 include 'connection.php';
+
+if (!isset($_SESSION['cartCount'])) {
+    $_SESSION['cartCount'] = 0;
+  }
+$_SESSION['cartCount']++;
+
+
 
 $sqlBestSeller = "SELECT * FROM products WHERE category = 'bestseller'";
 $resultBestSeller = $conn->query($sqlBestSeller);
@@ -148,7 +180,7 @@ if ($resultBestSeller->num_rows > 0) {
         echo "<p>Limited</p>";
         echo "</div>";
         echo "<div class='bbtn'>";
-        echo "<a href='addCart.php'>Add to cart</a>";
+        echo "<a href='addCart.php' class='addToCartLink'>Add to cart</a>";
         echo "</div>";
         echo "</div>";
     }
@@ -156,6 +188,7 @@ if ($resultBestSeller->num_rows > 0) {
 } else {
     echo "<p>No Best Seller products available.</p>";
 }
+
 
 $sqlGiftBox = "SELECT * FROM products WHERE category = 'giftbox'";
 $resultGiftBox = $conn->query($sqlGiftBox);
@@ -172,7 +205,7 @@ if ($resultGiftBox->num_rows > 0) {
         echo "<p>Limited</p>";
         echo "</div>";
         echo "<div class='bbtn'>";
-        echo "<a href='addCart.php'>Add to cart</a>";
+        echo "<a href='addCart.php' class='addToCartLink'>Add to cart</a>";
         echo "</div>";
         echo "</div>";
     }
@@ -186,14 +219,13 @@ $conn->close();
  
     </main>
     <footer>
-        <div class="leftfooter">
-            <div> <a href="home.php">Home</a>
+   <div> <a href="home.php">Home</a>
                 <br>
                 <br>
                 <a href="signin.php">Sign Up</a>
 
             </div>
-        </div>
+
 
         <div class="mainfooter">
             <div> <a href="about.php">About Us</a>
@@ -227,7 +259,8 @@ $conn->close();
             </div>
         </div>
     </footer>
-
+  
+            
 
 
 </body>
