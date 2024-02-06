@@ -81,47 +81,65 @@ body {
     margin-top: 10px;
 }
 
-@media only screen and (max-width: 768px) {      
-  .container{
-      width:700px;
-      height:fit-content;
-      
-  }
-  .container .forma h1{
-      font-size: 60px;
-      padding-top:5%;
-  }
-  .container .forma .inputi{
-      width: 100%;
-      height: 100px;
-      margin: 70px 0;
-  }
-  .container .inputi input {
-      font-size: 35px;
-      width: 100%; 
-      padding-left: 5%;
-  }
-  .container .forma .forgot-remember{
-      display: flex;
-      justify-content: space-between;
-      font-size: 30px;
-      margin: -15px 0 15px;
-      margin-top: 5px;
-  }
-  
-  .container .forma .btn{
-      width: fit-content;
-      height: 90px;
-      font-size:27px
-  }
-  .container .forma .register {
-      font-size: 27px;
-  }
-.container .forma .terms{
-    font-size:25px;
-}
-input[type="checkbox"] {
-    transform: scale(2);  
+.input.success inputi {
+    border-color: green;
 }
 
+.input.error inputi,
+.input.error textarea {
+    border-color: red;
 }
+
+.inputi .error {
+    color: red;
+    font-size: 0.8em;
+    font-family: serif;
+    padding-left: 5%;
+
+}
+    @media only screen and (max-width: 768px) {      
+        .container {
+            width: 85%; 
+            max-width: 350px; 
+            padding: 20px; 
+        
+        .container .forma h1 {
+            font-size: 30px; 
+            padding-top: 8px;
+        }
+        
+        .container .forma .inputi {
+            margin: 30px 0; 
+        
+        .container .inputi input {
+            font-size: 15px; 
+            padding: 10px;
+        }
+        
+        .container .forma .forgot-remember {
+            font-size: 12px; 
+            margin: -10px 0 10px;
+        }
+        
+        .container .forma .btn {
+            padding: 10px 20px; 
+            font-size: 16px; 
+            height: auto; 
+            margin-top: 20px; 
+        }
+        
+        .container .forma .register {
+            font-size: 12px; 
+            margin-top: 10px; 
+        }
+        
+        .container .forma .terms {
+            font-size: 12px; 
+        }
+        
+        input[type="checkbox"] {
+            transform: scale(1.5);
+        }
+    }
+}
+    }
